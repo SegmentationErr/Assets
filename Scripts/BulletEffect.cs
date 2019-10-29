@@ -35,8 +35,8 @@ public class BulletEffect : MonoBehaviour
         
         if (collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Wall")
         {
-            //if (collision.gameObject.tag == "Wall") print("wall");
-            //if (collision.gameObject.tag == "Enemy") print("Enemy");
+            if (collision.gameObject.tag == "Wall") print("wall");
+            if (collision.gameObject.tag == "Enemy") print("Enemy");
             //Invoke("DestroyBullet", lifeTime);
             rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             GameObject effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);

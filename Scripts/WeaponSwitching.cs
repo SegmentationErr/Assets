@@ -4,14 +4,22 @@ using UnityEngine;
 public class WeaponSwitching : MonoBehaviour
 {
 
+    [SerializeField]
+    public BarState energy;
     public int selectedWeapon = 0;
     // Start is called before the first frame update
     void Start()
     {
         SelectedWeapon();
     }
+    private void Awake()
+    {
+        energy.Initialize();
+        //energy.Initialize();
+    }
 
-    protected void SelectedWeapon()
+
+    private void SelectedWeapon()
     {
         int i = 0;
         //transform is weaponholder
@@ -25,17 +33,14 @@ public class WeaponSwitching : MonoBehaviour
             i++;
         }
     }
-    
+
+
+
     // Update is called once per frame
     void Update()
     {
         int previousSelectedWeapon = selectedWeapon;
-        if (transform.hasChanged)
-        {
-            //print("The transform has changed!");
-            SelectedWeapon();
-            transform.hasChanged = false;
-        }
+
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             if (selectedWeapon >= transform.childCount - 1)
@@ -50,31 +55,17 @@ public class WeaponSwitching : MonoBehaviour
             else
                 selectedWeapon--;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            selectedWeapon = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount>=2)
-        {
-            selectedWeapon = 1;
-        }if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount>=3)
-        {
-            selectedWeapon = 2;
-        }if (Input.GetKeyDown(KeyCode.Alpha4) && transform.childCount>=4)
-        {
-            selectedWeapon = 3;
-        }
 
         if (previousSelectedWeapon != selectedWeapon)
         {
             //print("select weapon!!!!!!!!!!!!!!!!!!!");
             SelectedWeapon();
         }
-
-       /* void onTriggerEnter2D(Collider2D collider)
+        /*if (IsInvoking("Shoot"))
         {
-            print("triggerrrrrrrrrrrrrrrrrrrrrr");
+            print("shootttttttttttttttttttttttttttttttttttttttt");
+            energy.CurrentVal -= 10;
         }*/
-        
+
     }
 }

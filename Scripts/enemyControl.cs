@@ -12,6 +12,7 @@ public class enemyControl : MonoBehaviour
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -21,15 +22,14 @@ public class enemyControl : MonoBehaviour
     {
         int xDir = 0;
         int yDir = 0;
-        if (Mathf.Abs(target.position.x - transform.position.x) > 1)
+        if (Mathf.Abs(target.position.x - transform.position.x) > 1.3)
             xDir = target.position.x > transform.position.x ? 1 : -1;
 
-        if (Mathf.Abs(target.position.y - transform.position.y) > 1)
+        if (Mathf.Abs(target.position.y - transform.position.y) > 1.3)
             yDir = target.position.y > transform.position.y ? 1 : -1;
             
         Vector2 movement = new Vector2(xDir, yDir);
         rb2D.MovePosition(rb2D.position + movement  *speed * Time.fixedDeltaTime);
-        //transform.Translate(movement * 3* Time.deltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

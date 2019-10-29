@@ -8,15 +8,24 @@ public class PlayerControl : MonoBehaviour
     public Animator animator;
     private Rigidbody2D player;
 
+    [SerializeField]
+    public BarState health;
+
+    //[SerializeField]
+    //public BarState energy;
+
     void Start()
     {
-        
-        //player.constraints = RigidbodyConstraints2D.FreezeAll;
         player = GetComponent<Rigidbody2D>();
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator = GetComponent<Animator>();
     }
 
+    private void Awake()
+    {
+        health.Initialize();
+        //energy.Initialize();
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -25,15 +34,47 @@ public class PlayerControl : MonoBehaviour
         Vector2 movement = new Vector2(mHorzontal, mVertical);
 
         player.MovePosition(player.position + movement * 7 * Time.fixedDeltaTime);
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            health.CurrentVal += 10;
+        }
+
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //player.constraints = RigidbodyConstraints2D;
+        player.constraints = RigidbodyConstraints2D.FreezeRotation;
         //player.constraints = RigidbodyConstraints2D.FreezeAll;\
-        if (collision.gameObject.tag == "Enemy") { }
+        if (collision.gameObject.tag == "Enemy") 
+        {
+            health.CurrentVal -= 10;
+            //energy.CurrentVal -= 10;
+        }
+        
             //animator.SetTrigger("playerDead");
         //Debug.Log("开始碰撞");
+
+
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        player.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //Debug.Log("持续碰撞");
+        //animator.SetTrigger("playerDead");
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        player.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //Debug.Log("离开碰撞");
+    }
+
+ /*   public Vector2 playerPosition()
+    {
+        Vector2 position = transform.position;
+        return position;
+    }*/
 
 
 }
