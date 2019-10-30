@@ -19,7 +19,7 @@ public class PickupTrigger : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             this.transform.SetParent(hand.transform);
-            //this.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
             transform.localPosition = new Vector3(0.03399992f, -0.068f,0);
             gameObject.GetComponent<WeaponControl>().enabled = true;
         }
