@@ -24,7 +24,6 @@ public class EnemyControl : MonoBehaviour
         potions = new List<GameObject>();
         potions.Add(GameObject.Find("potion_blue_small"));
         potions.Add(GameObject.Find("potion_red_small"));
-        Debug.Log(GameObject.FindWithTag("Potion"));
     }
 
     // Update is called once per frame
