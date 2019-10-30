@@ -1965,6 +1965,11 @@ PrefabInstance:
       propertyPath: energy.currentVal
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5573073209432801863, guid: 1656759845f800e46b0439b40552b32b,
+        type: 3}
+      propertyPath: speed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 272614596471172928, guid: 1656759845f800e46b0439b40552b32b,
         type: 3}
       propertyPath: energy.bar
@@ -1993,7 +1998,7 @@ PrefabInstance:
     - target: {fileID: 5573073209432801861, guid: 1656759845f800e46b0439b40552b32b,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 272614595402277858, guid: 1656759845f800e46b0439b40552b32b,
         type: 3}
@@ -2018,7 +2023,7 @@ PrefabInstance:
     - target: {fileID: 272614594539597639, guid: 1656759845f800e46b0439b40552b32b,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 272614596471172929, guid: 1656759845f800e46b0439b40552b32b,
         type: 3}
@@ -2028,7 +2033,7 @@ PrefabInstance:
     - target: {fileID: 272614596471172929, guid: 1656759845f800e46b0439b40552b32b,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5573073207617561695, guid: 1656759845f800e46b0439b40552b32b,
         type: 3}
@@ -2038,7 +2043,7 @@ PrefabInstance:
     - target: {fileID: 5573073207617561695, guid: 1656759845f800e46b0439b40552b32b,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1656759845f800e46b0439b40552b32b, type: 3}
