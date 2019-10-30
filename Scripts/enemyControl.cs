@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyControl : MonoBehaviour
+public class EnemyControl : MonoBehaviour
 {
     public Animator animator;
     private Rigidbody2D rb2D;
