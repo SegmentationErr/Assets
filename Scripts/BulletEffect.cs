@@ -5,9 +5,9 @@ using UnityEngine;
 public class BulletEffect : MonoBehaviour
 {
     private float speed = 20;
-    public float lifeTime = 0.3f;
     private Rigidbody2D rb2D;
     public GameObject destroyEffect;
+    public float damage = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +37,11 @@ public class BulletEffect : MonoBehaviour
         {
             if (collision.gameObject.tag == "Wall") print("wall");
             if (collision.gameObject.tag == "Enemy") print("Enemy");
-            //Invoke("DestroyBullet", lifeTime);
+
             rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             GameObject effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
-            Destroy(effect, 0.5f);
-            Destroy(this.gameObject);
+            Destroy(effect, 0.4f);
+            Destroy(gameObject);
         }
             
 
@@ -62,5 +62,9 @@ public class BulletEffect : MonoBehaviour
     {
         rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         //Debug.Log("离开碰撞");
+    }
+
+    public float getDamage() {
+        return damage;
     }
 }
