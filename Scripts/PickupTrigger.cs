@@ -5,39 +5,46 @@ using UnityEngine;
 public class PickupTrigger : MonoBehaviour
 {
     private GameObject hand;
+    private GameObject messageBoard;
+    private GameObject inventory;
+    private GameObject items = null;
     void Start()
     {
+        messageBoard = GameObject.Find("HUD/MessageBoard");
+        inventory = GameObject.Find("HUD/Inventory");
+        messageBoard.SetActive(false);
         hand = GameObject.Find("character2/WeaponHolder");
         if (this.transform.parent != hand.transform)
         {
             gameObject.GetComponent<WeaponControl>().enabled = false;
         }
-        // gameObject.tag = "Enemy";
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && items!=null)
+        {
+            this.transform.SetParent(hand.transform);
+            transform.localPosition = new Vector3(0.03399992f, -0.068f, 0);
+            gameObject.GetComponent<WeaponControl>().enabled = true;
+            this.gameObject.SetActive(false);
+
+            inventory.GetComponent<Inventory>().Invoke("updateSlot", 0f);
+        }
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
-        
-        // Debug.Log("1"+gameObject.tag);
-        // Debug.Log("2"+gameObject.tag == "Potion");
-        // Debug.Log("3"+gameObject.CompareTag("Potion"));
-        if (gameObject.CompareTag("Potion")) {
-            Debug.Log("oooooo");
-        } 
-
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log(gameObject.tag);
-
-            if (gameObject.tag == "Potion") {
-                Debug.Log("oooooo");
-            }
-            else {
-                this.transform.SetParent(hand.transform);
-                this.gameObject.SetActive(false);
-                transform.localPosition = new Vector3(0.03399992f, -0.068f,0);
-                gameObject.GetComponent<WeaponControl>().enabled = true;
-            }
+            items = other.gameObject;
+            messageBoard.SetActive(true);
         }
+        
+
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        messageBoard.SetActive(false);
+        items = null;
     }
 }

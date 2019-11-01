@@ -9,6 +9,8 @@ public class FlashingTextScripts : MonoBehaviour
 {
     public float timer;
 
+    public AudioSource ad;
+
     private void Update()
     {
         timer += Time.deltaTime;
@@ -25,6 +27,7 @@ public class FlashingTextScripts : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
+            ad.Play();
             SceneManager.LoadScene("Start Menu");
         }
     }

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float speed = 7f;
+    
     public Animator animator;
     private Rigidbody2D player;
 
     [SerializeField]
     public BarState health;
+
+    [SerializeField]
+    public GameObject gameOver;
 
     //[SerializeField]
     //public BarState energy;
@@ -19,7 +22,6 @@ public class PlayerControl : MonoBehaviour
         player = GetComponent<Rigidbody2D>();
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator = GetComponent<Animator>();
-        animator.SetFloat("Face", 1);
     }
 
     private void Awake()
@@ -32,20 +34,13 @@ public class PlayerControl : MonoBehaviour
     {
         float mHorzontal = Input.GetAxis("Horizontal");
         float mVertical = Input.GetAxis("Vertical");
-
         Vector2 movement = new Vector2(mHorzontal, mVertical);
 
-        animator.SetFloat("Horizontal", mHorzontal);
-        animator.SetFloat("Vertical", mVertical);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
-
-        if (movement.x > 0.1) {
-            animator.SetFloat("Face", movement.x);
-        } else if (movement.x < -0.1) {
-            animator.SetFloat("Face", movement.x);
+        if(health.CurrentVal == 0)
+        {
+            EndGame();
         }
-
-        player.MovePosition(player.position + movement * speed * Time.fixedDeltaTime);
+        player.MovePosition(player.position + movement * 7 * Time.fixedDeltaTime);
         if (Input.GetKeyDown(KeyCode.Q))
         {
             health.CurrentVal += 10;
@@ -59,7 +54,13 @@ public class PlayerControl : MonoBehaviour
         //player.constraints = RigidbodyConstraints2D.FreezeAll;\
         if (collision.gameObject.tag == "Enemy") 
         {
-            health.CurrentVal -= 10;
+            if (health.CurrentVal > 0)
+            {
+                health.CurrentVal -= 50;
+            }
+
+            
+            
             //energy.CurrentVal -= 10;
         }
         
@@ -87,6 +88,11 @@ public class PlayerControl : MonoBehaviour
         Vector2 position = transform.position;
         return position;
     }*/
+
+    public void EndGame()
+    {
+        gameOver.SetActive(true);
+    }
 
 
 }
