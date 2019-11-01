@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponSwitching : MonoBehaviour
 {
@@ -7,10 +8,13 @@ public class WeaponSwitching : MonoBehaviour
     [SerializeField]
     public BarState energy;
     public int selectedWeapon = 0;
+    private GameObject Inventory;
     // Start is called before the first frame update
     void Start()
     {
+        Inventory = GameObject.Find("HUD/Inventory");
         SelectedWeapon();
+        Inventory.transform.GetChild(selectedWeapon).GetChild(0).GetComponent<Image>().color = new Color32(100, 100, 100, 255);
     }
     private void Awake()
     {
@@ -58,14 +62,22 @@ public class WeaponSwitching : MonoBehaviour
 
         if (previousSelectedWeapon != selectedWeapon)
         {
-            //print("select weapon!!!!!!!!!!!!!!!!!!!");
             SelectedWeapon();
         }
-        /*if (IsInvoking("Shoot"))
-        {
-            print("shootttttttttttttttttttttttttttttttttttttttt");
-            energy.CurrentVal -= 10;
-        }*/
+        InitializeBoardColor();
+        Inventory.transform.GetChild(selectedWeapon).GetChild(0).GetComponent<Image>().color = new Color32(100, 100, 100, 255);
+    }
 
+    void InitializeBoardColor()
+    {
+        int i = 0;
+        foreach (Transform slots in Inventory.transform)
+        {
+            if (i != selectedWeapon)
+            {
+                slots.GetChild(0).GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            }
+            i++;
+        }
     }
 }

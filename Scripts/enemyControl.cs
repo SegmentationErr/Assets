@@ -57,7 +57,8 @@ public class enemyControl : MonoBehaviour
             animator.SetBool("enemyDead", true);
             Destroy(gameObject, 1f);
             
-            Instantiate(potions[(int)Random.Range(0, 2)], transform.position, Quaternion.identity);
+            Instantiate(potions[(int)Random.Range(0, 2)], transform.position, Quaternion.identity).GetComponent<PickupTrigger>().enabled=true;
+
             health = -0.001f;
         }
     }
