@@ -12,11 +12,12 @@ public class PickupTrigger : MonoBehaviour
     {
         messageBoard = GameObject.Find("HUD/MessageBoard");
         inventory = GameObject.Find("HUD/Inventory");
-        messageBoard.SetActive(false);
+        if(messageBoard!=null) messageBoard.SetActive(false);
+
         hand = GameObject.Find("character2/WeaponHolder");
         if (this.transform.parent != hand.transform)
         {
-            gameObject.GetComponent<WeaponControl>().enabled = false;
+            if(gameObject.GetComponent<WeaponControl>()!=null) gameObject.GetComponent<WeaponControl>().enabled = false;
         }
         // gameObject.tag = "Enemy";
     }

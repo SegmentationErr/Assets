@@ -11,6 +11,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     public BarState health;
 
+    [SerializeField]
+    public GameObject gameOver;
+
     //[SerializeField]
     //public BarState energy;
 
@@ -38,6 +41,11 @@ public class PlayerControl : MonoBehaviour
         animator.SetFloat("Horizontal", mHorzontal);
         animator.SetFloat("Vertical", mVertical);
         animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        if (health.CurrentVal == 0)
+        {
+            EndGame();
+        }
 
         if (movement.x > 0.1) {
             animator.SetFloat("Face", movement.x);
@@ -82,11 +90,16 @@ public class PlayerControl : MonoBehaviour
         //Debug.Log("离开碰撞");
     }
 
- /*   public Vector2 playerPosition()
+    /*   public Vector2 playerPosition()
+       {
+           Vector2 position = transform.position;
+           return position;
+       }*/
+
+    public void EndGame()
     {
-        Vector2 position = transform.position;
-        return position;
-    }*/
+        gameOver.SetActive(true);
+    }
 
 
 }
