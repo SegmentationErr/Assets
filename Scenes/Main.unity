@@ -1791,13 +1791,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5207641752602981394, guid: 219fcb45c42c16a4bbaab6f6c3bd9ea0,
         type: 3}
-<<<<<<< HEAD
-      propertyPath: m_Icon
-      value: 
-=======
       propertyPath: m_Layer
       value: 9
->>>>>>> c75542735f886c4eda0b21f69d37f4a389d74e1e
       objectReference: {fileID: 0}
     - target: {fileID: 6146232451289688284, guid: 219fcb45c42c16a4bbaab6f6c3bd9ea0,
         type: 3}
