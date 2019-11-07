@@ -26,7 +26,7 @@ public class DontDestroyMusic : MonoBehaviour
             }
             if (scene.buildIndex == 1)
             {
-            transform.gameObject.SetActive(false);
+                transform.gameObject.SetActive(false);
                 print("main scene");
             }
         }

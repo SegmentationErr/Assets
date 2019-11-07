@@ -14,6 +14,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     public GameObject gameOver;
 
+    private Rigidbody2D body;
+
     //[SerializeField]
     //public BarState energy;
 
@@ -22,6 +24,7 @@ public class PlayerControl : MonoBehaviour
         player = GetComponent<Rigidbody2D>();
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator = GetComponent<Animator>();
+        body = this.GetComponent<Rigidbody2D>();
         animator.SetFloat("Face", 1);
     }
 
@@ -42,10 +45,7 @@ public class PlayerControl : MonoBehaviour
         animator.SetFloat("Vertical", mVertical);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        if (health.CurrentVal == 0)
-        {
-            EndGame();
-        }
+
 
         if (movement.x > 0.1) {
             animator.SetFloat("Face", movement.x);
@@ -58,13 +58,25 @@ public class PlayerControl : MonoBehaviour
         {
             health.CurrentVal += 10;
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            health.CurrentVal -= 50;
+        }
+
+        if (health.CurrentVal<=0)
+        {
+            animator.Play("character2Dead");
+            EndGame();
+            body.Sleep();
+            this.transform.GetChild(0).gameObject.SetActive(false);
+        }
 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        player.constraints = RigidbodyConstraints2D.FreezeRotation;
-        //player.constraints = RigidbodyConstraints2D.FreezeAll;\
+        //player.constraints = RigidbodyConstraints2D.FreezeAll;
+        //player.constraints = RigidbodyConstraints2D.FreezeAll;
         if (collision.gameObject.tag == "Enemy") 
         {
             health.CurrentVal -= 10;
@@ -79,14 +91,15 @@ public class PlayerControl : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        player.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //player.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //player.constraints = RigidbodyConstraints2D.FreezeAll;
         //Debug.Log("持续碰撞");
         //animator.SetTrigger("playerDead");
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        player.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //player.constraints = RigidbodyConstraints2D.FreezeRotation;
         //Debug.Log("离开碰撞");
     }
 

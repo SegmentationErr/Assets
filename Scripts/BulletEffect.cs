@@ -32,8 +32,8 @@ public class BulletEffect : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-        
-        if (collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Wall")
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Door")
         {
             //if (collision.gameObject.tag == "Wall") print("wall");
             //if (collision.gameObject.tag == "Enemy") print("Enemy");

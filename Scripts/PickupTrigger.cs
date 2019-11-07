@@ -7,14 +7,21 @@ public class PickupTrigger : MonoBehaviour
     private GameObject hand;
     private GameObject messageBoard;
     private GameObject inventory;
+    private GameObject player;
     private GameObject items = null;
+    private PlayerControl pc;
+    private WeaponSwitching ws;
     void Start()
     {
         messageBoard = GameObject.Find("HUD/MessageBoard");
         inventory = GameObject.Find("HUD/Inventory");
-        if(messageBoard!=null) messageBoard.SetActive(false);
+        player = GameObject.Find("character2");
+        pc = player.GetComponent<PlayerControl>();
+        
+        if (messageBoard!=null) messageBoard.SetActive(false);
 
         hand = GameObject.Find("character2/WeaponHolder");
+        ws = hand.GetComponent<WeaponSwitching>();
         if (this.transform.parent != hand.transform)
         {
             if(gameObject.GetComponent<WeaponControl>()!=null) gameObject.GetComponent<WeaponControl>().enabled = false;
@@ -55,6 +62,14 @@ public class PickupTrigger : MonoBehaviour
         {
             if (this.gameObject.tag == "Potion")
             {
+                pc.health.CurrentVal += 5;
+                this.gameObject.SetActive(false);
+                Debug.Log("oooooo");
+            }
+            else if (this.gameObject.tag == "PotionE")
+            {
+                ws.energy.CurrentVal += 5;
+                this.gameObject.SetActive(false);
                 Debug.Log("oooooo");
             }
             else if (this.gameObject.tag == "Weapon")

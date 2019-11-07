@@ -22,7 +22,7 @@ public class Wall1 : MonoBehaviour
     {
         rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-        //Debug.Log("持续碰撞");
+        //Debug.Log("wall持续碰撞");
         //animator.SetTrigger("playerDead");
     }
 
