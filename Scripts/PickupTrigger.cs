@@ -11,20 +11,31 @@ public class PickupTrigger : MonoBehaviour
     private GameObject items = null;
     private PlayerControl pc;
     private WeaponSwitching ws;
+    private static bool initializeMessage = true;
     void Start()
     {
         messageBoard = GameObject.Find("HUD/MessageBoard");
+        if (this.gameObject.tag == "Weapon" && initializeMessage)
+        {
+            messageBoard.gameObject.SetActive(false);
+            initializeMessage = false;
+        }
+
         inventory = GameObject.Find("HUD/Inventory");
         player = GameObject.Find("character2");
         pc = player.GetComponent<PlayerControl>();
-        
-        if (messageBoard!=null) messageBoard.SetActive(false);
+
+        //if (messageBoard != null)
+        //{
+        //messageBoard.gameObject.SetActive(false); 
+        print("check message board  " + (messageBoard == null));
+        //}
 
         hand = GameObject.Find("character2/WeaponHolder");
         ws = hand.GetComponent<WeaponSwitching>();
         if (this.transform.parent != hand.transform)
         {
-            if(gameObject.GetComponent<WeaponControl>()!=null) gameObject.GetComponent<WeaponControl>().enabled = false;
+            if (gameObject.GetComponent<WeaponControl>() != null) gameObject.GetComponent<WeaponControl>().enabled = false;
         }
         // gameObject.tag = "Enemy";
     }
@@ -46,11 +57,20 @@ public class PickupTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (this.gameObject.tag == "Potion") {
-                Debug.Log("oooooo");
+            if (this.gameObject.tag == "Potion")
+            {
+                pc.health.CurrentVal += 20;
+                this.gameObject.SetActive(false);
             }
-            else if(this.gameObject.tag=="Weapon"){
+            else if (this.gameObject.tag == "PotionE")
+            {
+                ws.energy.CurrentVal += 20;
+                this.gameObject.SetActive(false);
+            }
+            else if (this.gameObject.tag == "Weapon")
+            {
                 items = other.gameObject;
+                print("on trigger enter check message board  " + (messageBoard == null));
                 messageBoard.SetActive(true);
             }
         }
@@ -60,23 +80,12 @@ public class PickupTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (this.gameObject.tag == "Potion")
-            {
-                pc.health.CurrentVal += 5;
-                this.gameObject.SetActive(false);
-                Debug.Log("oooooo");
-            }
-            else if (this.gameObject.tag == "PotionE")
-            {
-                ws.energy.CurrentVal += 5;
-                this.gameObject.SetActive(false);
-                Debug.Log("oooooo");
-            }
-            else if (this.gameObject.tag == "Weapon")
-            {
-                messageBoard.SetActive(false);
-                items = null;
-            }
+            //   else if (this.gameObject.tag == "Weapon")
+            //  {
+            print("on trigger exit check message board  " + (messageBoard == null));
+            messageBoard.SetActive(false);
+            items = null;
+            //}
         }
     }
 }
