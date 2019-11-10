@@ -28,7 +28,7 @@ public class PickupTrigger : MonoBehaviour
         //if (messageBoard != null)
         //{
         //messageBoard.gameObject.SetActive(false); 
-        print("check message board  " + (messageBoard == null));
+        // print("check message board  " + (messageBoard == null));
         //}
 
         hand = GameObject.Find("character2/WeaponHolder");

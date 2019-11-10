@@ -88,6 +88,7 @@ public class WeaponControl : MonoBehaviour
         }
     }
 
+    // private void EnemyAttack()
     IEnumerator EnemyAttack()
     {
         while (playerAlive)
@@ -103,12 +104,10 @@ public class WeaponControl : MonoBehaviour
             {
                 deltaTime += Time.deltaTime;
             }
-
             yield return new WaitForSeconds(0.2f);
         }
         print("player dead");
     }
-
     private void shootTracking()
     {
         Vector3 difference = weaponHolder.transform.parent.position - transform.position;
