@@ -28,14 +28,14 @@ public class WeaponControl : MonoBehaviour
         set
         {
             this.energyConsume = value;
-  
+
         }
     }
 
     void Start()
     {
         playerAlive = true;
-        
+
 
         weaponHolder = GameObject.Find("character2/WeaponHolder");
         ws = weaponHolder.GetComponent<WeaponSwitching>();
@@ -49,7 +49,8 @@ public class WeaponControl : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.J))
         {
             playerAlive = false;
@@ -84,37 +85,87 @@ public class WeaponControl : MonoBehaviour
                     deltaTime += Time.deltaTime;
                 }
             }
-        }  
+        }
     }
 
+    // private void EnemyAttack()
     IEnumerator EnemyAttack()
     {
         while (playerAlive)
         {
-            
-            //print(weaponHolder.transform.parent.position);
-            Vector3 difference = weaponHolder.transform.parent.position - transform.position;
-
-            float rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, rotz);
-
-                if (deltaTime >= maxDeltaTime)
-                {
-
-                        Instantiate(bullet, shotPoint.position, transform.rotation);
-                        //Instantiate(bullet, shotPoint.position, Quaternion.identity);
-                        deltaTime = 0;
-                        //shootSound.Play();
-                        
-                    
-                }
-                else
-                {
-                    deltaTime += Time.deltaTime;
-                }
-            
-            yield return new WaitForSeconds(0.1f);
+            if (deltaTime >= maxDeltaTime)
+            {
+                shootSurround();
+                //Instantiate(bullet, shotPoint.position, Quaternion.identity);
+                deltaTime = 0;
+                //shootSound.Play();
+            }
+            else
+            {
+                deltaTime += Time.deltaTime;
+            }
+            yield return new WaitForSeconds(0.2f);
         }
         print("player dead");
+    }
+    private void shootTracking()
+    {
+        Vector3 difference = weaponHolder.transform.parent.position - transform.position;
+        float rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);
+    }
+    private void shootSurround()
+    {
+        //shoot right
+        Vector3 difference = new Vector3(1, 0, 0);
+        float rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);
+
+        //shoot up
+        difference = new Vector3(0, 1, 0);
+        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);
+
+        //shoot left
+        difference = new Vector3(-1, 0, 0);
+        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);
+
+        //shoot down
+        difference = new Vector3(0, -1, 0);
+        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);
+
+        //shoot top-right
+        difference = new Vector3(1, 1, 0);
+        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);
+
+        //shoot up-left
+        difference = new Vector3(-1, 1, 0);
+        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);
+
+
+        //shoot down-right
+        difference = new Vector3(1, -1, 0);
+        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);
+
+        //shoot down-left
+        difference = new Vector3(-1, -1, 0);
+        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);
+
+
     }
 }

@@ -8,12 +8,15 @@ public class BulletEffect : MonoBehaviour
     private Rigidbody2D rb2D;
     public GameObject destroyEffect;
     public float damage = 10;
+    private GameObject player;
+    private PlayerControl pc;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        
+        player = GameObject.Find("character2");
+        pc = player.GetComponent<PlayerControl>();
 
     }
 
@@ -23,27 +26,29 @@ public class BulletEffect : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
-    void DestroyBullet() {
+    void DestroyBullet()
+    {
         GameObject effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
-        Destroy(effect,5f);
+        Destroy(effect, 5f);
         //Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-        Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Door")
+        //print(this.transform.);
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
         {
             //if (collision.gameObject.tag == "Wall") print("wall");
             //if (collision.gameObject.tag == "Enemy") print("Enemy");
+            if (collision.gameObject.tag == "Player") pc.health.CurrentVal -= 5;
 
             rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             GameObject effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
             Destroy(effect, 0.4f);
             Destroy(gameObject);
         }
-            
+
 
         //rb2D.gameObject.SetActive(false);
         //Debug.Log("开始碰撞");
@@ -64,7 +69,8 @@ public class BulletEffect : MonoBehaviour
         //Debug.Log("离开碰撞");
     }
 
-    public float getDamage() {
+    public float getDamage()
+    {
         return damage;
     }
 }
