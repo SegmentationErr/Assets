@@ -15,12 +15,14 @@ public class PlayerControl : MonoBehaviour
     public GameObject gameOver;
 
     private Rigidbody2D body;
+    private int coins;
 
     //[SerializeField]
     //public BarState energy;
 
     void Start()
     {
+        coins = 0;
         player = GetComponent<Rigidbody2D>();
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator = GetComponent<Animator>();
@@ -114,5 +116,12 @@ public class PlayerControl : MonoBehaviour
         gameOver.SetActive(true);
     }
 
+    public int getCoin() {
+        return coins;
+    }
+
+    public void addCoin() {
+        coins++;
+    }
 
 }

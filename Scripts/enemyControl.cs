@@ -11,7 +11,8 @@ public class enemyControl : MonoBehaviour
     public float maxHealth = 100;
     private float health;
     private Transform healthBar;
-    public List<GameObject> potions;
+    private List<GameObject> potions;
+    private GameObject coin;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class enemyControl : MonoBehaviour
         potions = new List<GameObject>();
         potions.Add(GameObject.Find("potion_blue_small"));
         potions.Add(GameObject.Find("potion_red_small"));
+        coin = GameObject.Find("coin");
     }
 
     // Update is called once per frame
@@ -63,9 +65,11 @@ public class enemyControl : MonoBehaviour
     }
     public void Damaged(float damage)
     {
+        if (health == -0.001f) return;
         health = health > damage ? health - damage : 0;
         if (health == 0)
         {
+            print(123412341234);
             rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
             rb2D.bodyType = RigidbodyType2D.Static;
 
@@ -74,6 +78,9 @@ public class enemyControl : MonoBehaviour
 
             Instantiate(potions[(int)Random.Range(0, 2)], transform.position, Quaternion.identity).GetComponent<PickupTrigger>().enabled = true;
 
+            for (int i = 0; i < (int)Random.Range(0, 5); i++) {
+                Instantiate(coin, new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z), Quaternion.identity);
+            }
             health = -0.001f;
         }
     }

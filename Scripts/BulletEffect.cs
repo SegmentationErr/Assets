@@ -48,7 +48,6 @@ public class BulletEffect : MonoBehaviour
         else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
         {
             //if (collision.gameObject.tag == "Wall") print("wall");
-            //if (collision.gameObject.tag == "Enemy") print("Enemy");
             if (collision.gameObject.tag == "Player") pc.health.CurrentVal -= 5;
 
             CollisionEffect();
