@@ -36,7 +36,7 @@ public class WeaponControl : MonoBehaviour
     {
         playerAlive = true;
 
-
+        transform.localPosition = new Vector3(0.03399992f, -0.068f, 0);
         weaponHolder = GameObject.Find("character2/WeaponHolder");
         ws = weaponHolder.GetComponent<WeaponSwitching>();
         this.EnergyConsume = energyConsume;
@@ -54,6 +54,7 @@ public class WeaponControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             playerAlive = false;
+
         }
         Shoot();
     }

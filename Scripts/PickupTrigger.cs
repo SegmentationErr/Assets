@@ -78,7 +78,7 @@ public class PickupTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && this.gameObject.tag!= "Potion" & this.gameObject.tag != "PotionE")
         {
             //   else if (this.gameObject.tag == "Weapon")
             //  {

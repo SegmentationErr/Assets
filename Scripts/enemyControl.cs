@@ -45,22 +45,10 @@ public class enemyControl : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet") {
-        // health -= BulletEffect.damage;
-        float damage = collision.gameObject.GetComponent<BulletEffect>().getDamage();
-        health = health > damage ? health-damage : 0;
+            // health -= BulletEffect.damage;
+            float damage = collision.gameObject.GetComponent<BulletEffect>().getDamage();
+            Damaged(damage);
         }   
-        
-        if (health == 0) {
-            rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-            rb2D.bodyType = RigidbodyType2D.Static;
-            
-            animator.SetBool("enemyDead", true);
-            Destroy(gameObject, 1f);
-            
-            Instantiate(potions[(int)Random.Range(0, 2)], transform.position, Quaternion.identity).GetComponent<PickupTrigger>().enabled=true;
-
-            health = -0.001f;
-        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -72,5 +60,21 @@ public class enemyControl : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         //Debug.Log("离开碰撞");
+    }
+    public void Damaged(float damage)
+    {
+        health = health > damage ? health - damage : 0;
+        if (health == 0)
+        {
+            rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            rb2D.bodyType = RigidbodyType2D.Static;
+
+            animator.SetBool("enemyDead", true);
+            Destroy(gameObject, 1f);
+
+            Instantiate(potions[(int)Random.Range(0, 2)], transform.position, Quaternion.identity).GetComponent<PickupTrigger>().enabled = true;
+
+            health = -0.001f;
+        }
     }
 }
