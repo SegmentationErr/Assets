@@ -1653,7 +1653,7 @@ Transform:
   m_GameObject: {fileID: 743921577}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.14, y: -1.94, z: 0}
-  m_LocalScale: {x: 2.8199098, y: 2.8199098, z: 2.8199098}
+  m_LocalScale: {x: 2.81991, y: 2.8199098, z: 2.8199098}
   m_Children:
   - {fileID: 117128598}
   - {fileID: 185113661}
@@ -4420,6 +4420,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9175636942935953313, guid: 8edfea0207e4f0547964be5163b2d94f,
         type: 3}
+    - target: {fileID: 4133696431979225139, guid: 1656759845f800e46b0439b40552b32b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4133696430686308891, guid: 1656759845f800e46b0439b40552b32b,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
