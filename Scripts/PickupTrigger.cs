@@ -72,13 +72,16 @@ public class PickupTrigger : MonoBehaviour
                 items = other.gameObject;
                 print("on trigger enter check message board  " + (messageBoard == null));
                 messageBoard.SetActive(true);
+            } else if (this.gameObject.tag == "Coin") {
+                other.GetComponent<PlayerControl>().addCoin();
+                this.gameObject.SetActive(false);
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && this.gameObject.tag!= "Potion" & this.gameObject.tag != "PotionE")
         {
             //   else if (this.gameObject.tag == "Weapon")
             //  {

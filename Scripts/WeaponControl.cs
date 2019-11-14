@@ -36,7 +36,7 @@ public class WeaponControl : MonoBehaviour
     {
         playerAlive = true;
 
-
+        transform.localPosition = new Vector3(0.03399992f, -0.068f, 0);
         weaponHolder = GameObject.Find("character2/WeaponHolder");
         ws = weaponHolder.GetComponent<WeaponSwitching>();
         this.EnergyConsume = energyConsume;
@@ -54,6 +54,7 @@ public class WeaponControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             playerAlive = false;
+
         }
         Shoot();
     }
@@ -66,6 +67,13 @@ public class WeaponControl : MonoBehaviour
             Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
             float rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+            // print(rotz);
+            if (((rotz < -90f || rotz > 90f) && transform.localScale.y > 0) ||
+                (rotz >= -90f && rotz <= 90f && transform.localScale.y < 0)) {
+                transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+            }
+
             transform.rotation = Quaternion.Euler(0f, 0f, rotz);
             if ((ws.energy.CurrentVal - energyConsume) >= 0)
             {

@@ -37,25 +37,30 @@ public class BulletEffect : MonoBehaviour
     {
         //rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         //print(this.transform.);
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
+        if (this.gameObject.tag == "EnemyBullet")
+        {
+            if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
+            {
+                if (collision.gameObject.tag == "Player") pc.health.CurrentVal -= 5;
+                CollisionEffect();
+            }
+        }
+        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
         {
             //if (collision.gameObject.tag == "Wall") print("wall");
-            //if (collision.gameObject.tag == "Enemy") print("Enemy");
             if (collision.gameObject.tag == "Player") pc.health.CurrentVal -= 5;
 
-            rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-            GameObject effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
-            Destroy(effect, 0.4f);
-            Destroy(gameObject);
+            CollisionEffect();
         }
-
-
-        //rb2D.gameObject.SetActive(false);
-        //Debug.Log("开始碰撞");
-        //animator.SetTrigger("playerDead");
     }
 
-
+    private void CollisionEffect()
+    {
+        rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+        GameObject effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 0.4f);
+        Destroy(gameObject);
+    }
     private void OnCollisionStay2D(Collision2D collision)
     {
         rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;

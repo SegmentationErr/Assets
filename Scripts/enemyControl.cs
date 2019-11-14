@@ -11,7 +11,8 @@ public class enemyControl : MonoBehaviour
     public float maxHealth = 100;
     private float health;
     private Transform healthBar;
-    public List<GameObject> potions;
+    private List<GameObject> potions;
+    private GameObject coin;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class enemyControl : MonoBehaviour
         potions = new List<GameObject>();
         potions.Add(GameObject.Find("potion_blue_small"));
         potions.Add(GameObject.Find("potion_red_small"));
+        coin = GameObject.Find("coin");
     }
 
     // Update is called once per frame
@@ -45,22 +47,10 @@ public class enemyControl : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet") {
-        // health -= BulletEffect.damage;
-        float damage = collision.gameObject.GetComponent<BulletEffect>().getDamage();
-        health = health > damage ? health-damage : 0;
+            // health -= BulletEffect.damage;
+            float damage = collision.gameObject.GetComponent<BulletEffect>().getDamage();
+            Damaged(damage);
         }   
-        
-        if (health == 0) {
-            rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
-            rb2D.bodyType = RigidbodyType2D.Static;
-            
-            animator.SetBool("enemyDead", true);
-            Destroy(gameObject, 1f);
-            
-            Instantiate(potions[(int)Random.Range(0, 2)], transform.position, Quaternion.identity).GetComponent<PickupTrigger>().enabled=true;
-
-            health = -0.001f;
-        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -72,5 +62,26 @@ public class enemyControl : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         //Debug.Log("离开碰撞");
+    }
+    public void Damaged(float damage)
+    {
+        if (health == -0.001f) return;
+        health = health > damage ? health - damage : 0;
+        if (health == 0)
+        {
+            print(123412341234);
+            rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            rb2D.bodyType = RigidbodyType2D.Static;
+
+            animator.SetBool("enemyDead", true);
+            Destroy(gameObject, 1f);
+
+            Instantiate(potions[(int)Random.Range(0, 2)], transform.position, Quaternion.identity).GetComponent<PickupTrigger>().enabled = true;
+
+            for (int i = 0; i < (int)Random.Range(0, 5); i++) {
+                Instantiate(coin, new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z), Quaternion.identity);
+            }
+            health = -0.001f;
+        }
     }
 }
