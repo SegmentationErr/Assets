@@ -86,10 +86,10 @@ public class enemyControl : MonoBehaviour
     {
         int xDir = 0;
         int yDir = 0;
-        if (Mathf.Abs(target.position.x - transform.position.x) > 1)
+        if (Mathf.Abs(target.position.x - transform.position.x) > 3)
             xDir = target.position.x > transform.position.x ? 1 : -1;
 
-        if (Mathf.Abs(target.position.y - transform.position.y) > 1)
+        if (Mathf.Abs(target.position.y - transform.position.y) > 3)
             yDir = target.position.y > transform.position.y ? 1 : -1;
 
         Vector2 movement = new Vector2(xDir, yDir);

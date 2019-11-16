@@ -42,12 +42,12 @@ public class RoomControl : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player") {
             edge.isTrigger = false;
-        }
-        foreach (MonoBehaviour c in transform.GetComponentsInChildren<WeaponControl>()) {
-            c.enabled = true;
-        }
-        foreach (MonoBehaviour c in transform.GetComponentsInChildren<enemyControl>()) {
-            c.enabled = true;
+            foreach (MonoBehaviour c in transform.GetComponentsInChildren<WeaponControl>()) {
+                c.enabled = true;
+            }
+            foreach (MonoBehaviour c in transform.GetComponentsInChildren<enemyControl>()) {
+                c.enabled = true;
+            }
         }
     }
 }

@@ -71,6 +71,13 @@ public class WeaponControl : MonoBehaviour
             float rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotz);
             
+            if (((rotz < -90f || rotz > 90f) && transform.localScale.y > 0) ||
+                (rotz >= -90f && rotz <= 90f && transform.localScale.y < 0)) {
+                transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+            }
+
+            transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+
             if ((ws.energy.CurrentVal - energyConsume) >= 0)
             {
                 if (deltaTime >= maxDeltaTime)
