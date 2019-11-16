@@ -17,7 +17,7 @@ public class DontDestroyMusic : MonoBehaviour
 
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-       
+            //welcome and start
             if ((scene.buildIndex == 2) || (scene.buildIndex == 3))
             {
             transform.gameObject.SetActive(true);

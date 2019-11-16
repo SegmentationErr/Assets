@@ -42,8 +42,7 @@ public class WeaponControl : MonoBehaviour
         weaponHolder = GameObject.Find("character2/WeaponHolder");
         ws = weaponHolder.GetComponent<WeaponSwitching>();
         this.EnergyConsume = energyConsume;
-
-        if (this.transform.parent.tag == "Enemy")
+        if (transform.parent.gameObject.tag == "Enemy")
         {
             StartCoroutine(EnemyAttack());
         }
@@ -64,19 +63,19 @@ public class WeaponControl : MonoBehaviour
     public void Shoot()
     {
         //player
-        if (this.transform.parent.tag != "Enemy")
+        if (transform.parent.gameObject.tag != "Enemy")
         {
             Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
             float rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotz);
-            
+
             if (((rotz < -90f || rotz > 90f) && transform.localScale.y > 0) ||
                 (rotz >= -90f && rotz <= 90f && transform.localScale.y < 0)) {
                 transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
             }
 
-            transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+            
 
             if ((ws.energy.CurrentVal - energyConsume) >= 0)
             {

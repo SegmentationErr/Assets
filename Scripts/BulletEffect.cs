@@ -10,21 +10,33 @@ public class BulletEffect : MonoBehaviour
     public float damage = 10;
     private GameObject player;
     private PlayerControl pc;
-
+    float m_distanceTraveled;
+    [SerializeField]
+    private float distance = 6f;
     // Start is called before the first frame update
     void Start()
     {
+        //distance = 3f;
         rb2D = GetComponent<Rigidbody2D>();
         player = GameObject.Find("character2");
         pc = player.GetComponent<PlayerControl>();
-
+        m_distanceTraveled = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-     
+        print("before: "+m_distanceTraveled);
+        if (m_distanceTraveled < distance)
+        {
+            print(m_distanceTraveled);
+            Vector3 oldPosition = transform.position;
+
             transform.Translate(Vector2.right * speed * Time.deltaTime);
+            m_distanceTraveled += Vector3.Distance(oldPosition, transform.position);
+        }
+        else this.gameObject.SetActive(false);
+        //transform.Translate(Vector2.right * speed * Time.deltaTime);
         
     }
 

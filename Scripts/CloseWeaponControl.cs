@@ -12,7 +12,7 @@ public class CloseWeaponControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.localPosition = new Vector3(0.1f, -0.068f, 0);
+        transform.localPosition = new Vector3(0.03399992f, -0.068f, 0);
     }
 
     // Update is called once per frame
@@ -22,7 +22,11 @@ public class CloseWeaponControl : MonoBehaviour
 
         float rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotz);
-
+        if (((rotz < -90f || rotz > 90f) && transform.localScale.y > 0) ||
+                (rotz >= -90f && rotz <= 90f && transform.localScale.y < 0))
+        {
+            transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+        }
         if (enemyAtackable != null && Mathf.Abs(enemyAtackable.transform.position.x - transform.position.x) > 1.3)
         {
             //print("out of range");
@@ -50,7 +54,7 @@ public class CloseWeaponControl : MonoBehaviour
         
         if (collision.gameObject.tag == "Enemy")
         {
-            print("fish trigger");
+            //print("fish trigger");
             enemyAtackable = collision.gameObject;
         }
         
@@ -60,7 +64,7 @@ public class CloseWeaponControl : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            print("fish trigger stay");
+            //print("fish trigger stay");
             enemyAtackable = collision.gameObject;
         }
     }

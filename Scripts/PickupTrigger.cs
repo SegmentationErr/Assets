@@ -11,32 +11,30 @@ public class PickupTrigger : MonoBehaviour
     private GameObject items = null;
     private PlayerControl pc;
     private WeaponSwitching ws;
-    private static bool initializeMessage = true;
-    void Start()
+
+    private void Awake()
     {
         messageBoard = GameObject.Find("HUD/MessageBoard");
-        if (this.gameObject.tag == "Weapon" && initializeMessage)
+    }
+
+    void Start()
+    {
+        if (this.gameObject.tag == "Weapon" && messageBoard.activeSelf)
         {
-            messageBoard.gameObject.SetActive(false);
-            initializeMessage = false;
+             messageBoard.gameObject.SetActive(false);
         }
 
         inventory = GameObject.Find("HUD/Inventory");
         player = GameObject.Find("character2");
         pc = player.GetComponent<PlayerControl>();
 
-        //if (messageBoard != null)
-        //{
-        //messageBoard.gameObject.SetActive(false); 
-        // print("check message board  " + (messageBoard == null));
-        //}
-
         hand = GameObject.Find("character2/WeaponHolder");
         ws = hand.GetComponent<WeaponSwitching>();
         if (this.transform.parent != hand.transform)
         {
-            if (gameObject.GetComponent<WeaponControl>() != null) gameObject.GetComponent<WeaponControl>().enabled = false;
             if (gameObject.GetComponent<CloseWeaponControl>() != null) gameObject.GetComponent<CloseWeaponControl>().enabled = false;
+            if (gameObject.GetComponent<WeaponControl>() != null) gameObject.GetComponent<WeaponControl>().enabled = false;
+            
         }
         // gameObject.tag = "Enemy";
     }
@@ -73,7 +71,6 @@ public class PickupTrigger : MonoBehaviour
             else if (this.gameObject.tag == "Weapon" || this.gameObject.tag == "Weapon_moon")
             {
                 items = other.gameObject;
-                print("on trigger enter check message board  " + (messageBoard == null));
                 messageBoard.SetActive(true);
             }
             else if (this.gameObject.tag == "Coin")
@@ -88,10 +85,9 @@ public class PickupTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && this.gameObject.tag == "Weapon")
         {
-            print("on trigger exit check message board  " + (messageBoard == null));
             messageBoard.SetActive(false);
             items = null;
         }
-    } 
+    }
 }
 
