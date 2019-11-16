@@ -32,18 +32,22 @@ public class RoomControl : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        // print(other.tag);
+        print(other.tag);
+        if (other.tag == "Bullet")
+        {
+            edge.isTrigger = false;
+        }
     }
     
     private void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player") {
             edge.isTrigger = false;
-            foreach (MonoBehaviour c in transform.GetComponentsInChildren<WeaponControl>()) {
-                c.enabled = true;
-            }
-            foreach (MonoBehaviour c in transform.GetComponentsInChildren<enemyControl>()) {
-                c.enabled = true;
-            }
+        }
+        foreach (MonoBehaviour c in transform.GetComponentsInChildren<WeaponControl>()) {
+            c.enabled = true;
+        }
+        foreach (MonoBehaviour c in transform.GetComponentsInChildren<enemyControl>()) {
+            c.enabled = true;
         }
     }
 }

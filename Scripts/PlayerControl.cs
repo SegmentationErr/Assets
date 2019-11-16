@@ -49,9 +49,12 @@ public class PlayerControl : MonoBehaviour
 
 
 
-        if (movement.x > 0.1) {
+        if (movement.x > 0.1)
+        {
             animator.SetFloat("Face", movement.x);
-        } else if (movement.x < -0.1) {
+        }
+        else if (movement.x < -0.1)
+        {
             animator.SetFloat("Face", movement.x);
         }
 
@@ -65,7 +68,7 @@ public class PlayerControl : MonoBehaviour
             health.CurrentVal -= 50;
         }
 
-        if (health.CurrentVal<=0)
+        if (health.CurrentVal <= 0)
         {
             animator.Play("character2Dead");
             EndGame();
@@ -79,13 +82,13 @@ public class PlayerControl : MonoBehaviour
     {
         //player.constraints = RigidbodyConstraints2D.FreezeAll;
         //player.constraints = RigidbodyConstraints2D.FreezeAll;
-        if (collision.gameObject.tag == "Enemy") 
+        if (collision.gameObject.tag == "Enemy")
         {
             health.CurrentVal -= 10;
             //energy.CurrentVal -= 10;
         }
-        
-            //animator.SetTrigger("playerDead");
+
+        //animator.SetTrigger("playerDead");
         //Debug.Log("开始碰撞");
 
 
@@ -116,11 +119,13 @@ public class PlayerControl : MonoBehaviour
         gameOver.SetActive(true);
     }
 
-    public int getCoin() {
+    public int getCoin()
+    {
         return coins;
     }
 
-    public void addCoin() {
+    public void addCoin()
+    {
         coins++;
     }
 

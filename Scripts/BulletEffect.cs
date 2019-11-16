@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletEffect : MonoBehaviour
 {
-    private float speed = 20;
+    public float speed = 20;
     private Rigidbody2D rb2D;
     public GameObject destroyEffect;
     public float damage = 10;
@@ -23,7 +23,9 @@ public class BulletEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+     
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        
     }
 
     void DestroyBullet()
@@ -39,16 +41,22 @@ public class BulletEffect : MonoBehaviour
         //print(this.transform.);
         if (this.gameObject.tag == "EnemyBullet")
         {
-            if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
+            if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Door")
             {
                 if (collision.gameObject.tag == "Player") pc.health.CurrentVal -= 5;
                 CollisionEffect();
             }
+            if (collision.gameObject.tag == "Enemy")
+            {
+                //print("enemy collision");
+                this.gameObject.SetActive(false);
+            }
         }
-        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
+        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player"|| collision.gameObject.tag == "Door")
         {
             //if (collision.gameObject.tag == "Wall") print("wall");
-            if (collision.gameObject.tag == "Player") pc.health.CurrentVal -= 5;
+            //if (collision.gameObject.tag == "Enemy") print("Enemy");
+            //if (collision.gameObject.tag == "Player") pc.health.CurrentVal -= 5;
 
             CollisionEffect();
         }

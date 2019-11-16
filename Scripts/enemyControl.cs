@@ -31,26 +31,22 @@ public class enemyControl : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        int xDir = 0;
-        int yDir = 0;
-        if (Mathf.Abs(target.position.x - transform.position.x) > 3)
-            xDir = target.position.x > transform.position.x ? 1 : -1;
+        if (this.transform.GetChild(2).gameObject.tag != "EnemyArrow")
+        {
+            moveTowards();
+            //moveRandom();
+        }
 
-        if (Mathf.Abs(target.position.y - transform.position.y) > 3)
-            yDir = target.position.y > transform.position.y ? 1 : -1;
-            
-        Vector2 movement = new Vector2(xDir, yDir);
-        rb2D.MovePosition(rb2D.position + movement  *speed * Time.fixedDeltaTime);
-
-        healthBar.localScale = new Vector3(health/maxHealth, 1f, 1f);
+        healthBar.localScale = new Vector3(health / maxHealth, 1f, 1f);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bullet") {
+        if (collision.gameObject.tag == "Bullet")
+        {
             // health -= BulletEffect.damage;
             float damage = collision.gameObject.GetComponent<BulletEffect>().getDamage();
             Damaged(damage);
-        }   
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -78,10 +74,40 @@ public class enemyControl : MonoBehaviour
 
             Instantiate(potions[(int)Random.Range(0, 2)], transform.position, Quaternion.identity).GetComponent<PickupTrigger>().enabled = true;
 
-            for (int i = 0; i < (int)Random.Range(0, 5); i++) {
+            for (int i = 0; i < (int)Random.Range(0, 5); i++)
+            {
                 Instantiate(coin, new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z), Quaternion.identity);
             }
             health = -0.001f;
         }
+    }
+
+    private void moveTowards()
+    {
+        int xDir = 0;
+        int yDir = 0;
+        if (Mathf.Abs(target.position.x - transform.position.x) > 1)
+            xDir = target.position.x > transform.position.x ? 1 : -1;
+
+        if (Mathf.Abs(target.position.y - transform.position.y) > 1)
+            yDir = target.position.y > transform.position.y ? 1 : -1;
+
+        Vector2 movement = new Vector2(xDir, yDir);
+        rb2D.MovePosition(rb2D.position + movement * speed * Time.fixedDeltaTime);
+    }
+
+    private void moveRandom()
+    {
+        int xDir = 0;
+        int yDir = 0;
+        if (Mathf.Abs(target.position.x - transform.position.x) < 10)
+            xDir = (int) Random.Range(-5f, 5f);
+
+
+        if (Mathf.Abs(target.position.y - transform.position.y) < 10)
+            yDir = (int)Random.Range(-5f, 5f);
+
+        Vector2 movement = new Vector2(xDir, yDir);
+        rb2D.MovePosition(rb2D.position + movement * speed * Time.fixedDeltaTime);
     }
 }

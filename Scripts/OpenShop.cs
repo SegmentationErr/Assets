@@ -9,8 +9,8 @@ public class OpenShop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UI = GameObject.Find("Canvas");
-        shop = UI.transform.Find("Shop").gameObject;
+        UI = GameObject.Find("UI");
+        shop = UI.transform.Find("Shop UI").gameObject;
     }
 
     // Update is called once per frame

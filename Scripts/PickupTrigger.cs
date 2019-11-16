@@ -36,6 +36,7 @@ public class PickupTrigger : MonoBehaviour
         if (this.transform.parent != hand.transform)
         {
             if (gameObject.GetComponent<WeaponControl>() != null) gameObject.GetComponent<WeaponControl>().enabled = false;
+            if (gameObject.GetComponent<CloseWeaponControl>() != null) gameObject.GetComponent<CloseWeaponControl>().enabled = false;
         }
         // gameObject.tag = "Enemy";
     }
@@ -46,7 +47,9 @@ public class PickupTrigger : MonoBehaviour
         {
             this.transform.SetParent(hand.transform);
             transform.localPosition = new Vector3(0.03399992f, -0.068f, 0);
-            gameObject.GetComponent<WeaponControl>().enabled = true;
+            //gameObject.GetComponent<WeaponControl>().enabled = true;
+            if (gameObject.GetComponent<WeaponControl>() != null) gameObject.GetComponent<WeaponControl>().enabled = true;
+            if (gameObject.GetComponent<CloseWeaponControl>() != null) gameObject.GetComponent<CloseWeaponControl>().enabled = true;
             this.gameObject.SetActive(false);
 
             inventory.GetComponent<Inventory>().Invoke("updateSlot", 0f);
@@ -67,12 +70,14 @@ public class PickupTrigger : MonoBehaviour
                 ws.energy.CurrentVal += 20;
                 this.gameObject.SetActive(false);
             }
-            else if (this.gameObject.tag == "Weapon")
+            else if (this.gameObject.tag == "Weapon" || this.gameObject.tag == "Weapon_moon")
             {
                 items = other.gameObject;
                 print("on trigger enter check message board  " + (messageBoard == null));
                 messageBoard.SetActive(true);
-            } else if (this.gameObject.tag == "Coin") {
+            }
+            else if (this.gameObject.tag == "Coin")
+            {
                 other.GetComponent<PlayerControl>().addCoin();
                 this.gameObject.SetActive(false);
             }
@@ -81,14 +86,12 @@ public class PickupTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" && this.gameObject.tag!= "Potion" & this.gameObject.tag != "PotionE")
+        if (other.gameObject.tag == "Player" && this.gameObject.tag == "Weapon")
         {
-            //   else if (this.gameObject.tag == "Weapon")
-            //  {
             print("on trigger exit check message board  " + (messageBoard == null));
             messageBoard.SetActive(false);
             items = null;
-            //}
         }
-    }
+    } 
 }
+
