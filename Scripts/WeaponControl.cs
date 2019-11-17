@@ -120,6 +120,7 @@ public class WeaponControl : MonoBehaviour
                 else shootSurround();
                 //Instantiate(bullet, shotPoint.position, Quaternion.identity);
                 deltaTime = 0;
+                shootSound.Play();
                 //shootSound.Play();
             }
             else

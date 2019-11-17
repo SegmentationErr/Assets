@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 3785920333464526625}
   - component: {fileID: 5081241991497943656}
   m_Layer: 0
-  m_Name: w13
+  m_Name: razar
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ SpriteRenderer:
   m_SortingLayerID: 680755399
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: b759a40d1786ceb4395da0de5687d0fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a018313d79385c48a9694a2695ccb41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9834b15f8292cd41abfbb2fbc143bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 9175636942935953313, guid: 78a7c753f5f859640807d85a0035b0ce, type: 3}
+  bullet: {fileID: 9175636942935953313, guid: 3b8ccf812751bcb4b9b3ae45b7478385, type: 3}
   weaponHolder: {fileID: 0}
   shotPoint: {fileID: 107213591104763282}
   ws: {fileID: 0}
@@ -261,7 +261,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.19, y: 0.09}
+    oldSize: {x: 0.31, y: 0.09}
     newSize: {x: 0.29, y: 0.09}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -294,7 +294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107213591104763277}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.356, y: 0.008510919, z: -0.037986737}
+  m_LocalPosition: {x: 0.729, y: 0.003, z: -0.037986737}
   m_LocalScale: {x: 1.0638638, y: 1.0638638, z: 1.0638638}
   m_Children: []
   m_Father: {fileID: 107213590618060390}

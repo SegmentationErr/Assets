@@ -18,7 +18,7 @@ public class BulletEffect : MonoBehaviour
     {
         //distance = 3f;
         rb2D = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("character2");
+        player = GameObject.FindWithTag("Player");
         pc = player.GetComponent<PlayerControl>();
         m_distanceTraveled = 0f;
     }
@@ -26,10 +26,9 @@ public class BulletEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("before: "+m_distanceTraveled);
         if (m_distanceTraveled < distance)
         {
-            print(m_distanceTraveled);
+            //print(m_distanceTraveled);
             Vector3 oldPosition = transform.position;
 
             transform.Translate(Vector2.right * speed * Time.deltaTime);
@@ -55,7 +54,7 @@ public class BulletEffect : MonoBehaviour
         {
             if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Door")
             {
-                if (collision.gameObject.tag == "Player") pc.health.CurrentVal -= 5;
+                if (collision.gameObject.tag == "Player") pc.health.CurrentVal -= damage;
                 CollisionEffect();
             }
             if (collision.gameObject.tag == "Enemy")

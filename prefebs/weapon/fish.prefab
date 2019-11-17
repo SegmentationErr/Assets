@@ -41,9 +41,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4a77faf696502c34088d735f2b8a56eb, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 5ba4d144f2a9ffd4a9252cc68f763ca9, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.078
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 4242410767777884957}
   - component: {fileID: -940144022868737203}
   m_Layer: 0
-  m_Name: w11
+  m_Name: fish
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,8 +185,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3547951147798788579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 3, z: 2}
+  m_LocalPosition: {x: 1.3156, y: -0.064, z: 0}
+  m_LocalScale: {x: 7.544145, y: 4.4211574, z: 2}
   m_Children:
   - {fileID: 3547951147312151056}
   - {fileID: 3547951146580875304}
@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 6123820130718678859, guid: 3847b1e67fcd1c84a9732c9cc8bf8889, type: 3}
+  attackSound: {fileID: 3547951146580875305}
   speed: 0
 --- !u!58 &4242410767777884957
 CircleCollider2D:

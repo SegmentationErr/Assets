@@ -13,9 +13,11 @@ public class enemyControl : MonoBehaviour
     private Transform healthBar;
     private List<GameObject> potions;
     private GameObject coin;
+    private bool faceright;
 
     void Start()
     {
+        faceright = true;
         rb2D = GetComponent<Rigidbody2D>();
         rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator = GetComponent<Animator>();
@@ -65,7 +67,6 @@ public class enemyControl : MonoBehaviour
         health = health > damage ? health - damage : 0;
         if (health == 0)
         {
-            print(123412341234);
             rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
             rb2D.bodyType = RigidbodyType2D.Static;
 
@@ -94,6 +95,41 @@ public class enemyControl : MonoBehaviour
 
         Vector2 movement = new Vector2(xDir, yDir);
         rb2D.MovePosition(rb2D.position + movement * speed * Time.fixedDeltaTime);
+
+/*        float xDiff = target.position.x - transform.position.x;
+        float yDiff = target.position.y - transform.position.y;
+        if (xDiff > 0 && yDiff > 0)
+        {
+            if (faceright == false)
+            {
+                Flip();
+            }
+        }
+        else if (xDiff > 0 && yDiff < 0)
+        {
+            if (faceright == false)
+            {
+                Flip();
+            }
+        }
+        else if (xDiff < 0 && yDiff < 0)
+        {
+            if (faceright == true)
+            {
+                Flip();
+            }
+        }
+        else if (xDiff < 0 && yDiff > 0)
+        {
+            if (faceright == true)
+            {
+                Flip();
+            }
+        }
+        else if (xDiff == 0 && yDiff == 0)
+        {
+            
+        }*/
     }
 
     private void moveRandom()
@@ -109,5 +145,13 @@ public class enemyControl : MonoBehaviour
 
         Vector2 movement = new Vector2(xDir, yDir);
         rb2D.MovePosition(rb2D.position + movement * speed * Time.fixedDeltaTime);
+    }
+
+    void Flip()
+    {
+        faceright = !faceright;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }

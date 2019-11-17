@@ -7,6 +7,8 @@ public class CloseWeaponControl : MonoBehaviour
     private GameObject enemyAtackable=null;
     public GameObject effect;
     private enemyControl eC;
+    private CloseEnemyControl cec;
+    public AudioSource attackSound;
 
     public float speed;
     // Start is called before the first frame update
@@ -40,10 +42,23 @@ public class CloseWeaponControl : MonoBehaviour
             if (enemyAtackable != null)
             {
                 eC = enemyAtackable.GetComponent<enemyControl>();
+                cec = enemyAtackable.GetComponent<CloseEnemyControl>();
                 //print("attackable");
-                GameObject effect2 = Instantiate(effect, enemyAtackable.transform.position, Quaternion.identity);
-                eC.Damaged(5);
-                Destroy(effect2, 0.4f);
+                if (eC != null)
+                {
+                    GameObject effect2 = Instantiate(effect, enemyAtackable.transform.position, Quaternion.identity);
+                    attackSound.Play();
+                    eC.Damaged(5);
+                    Destroy(effect2, 0.4f);
+                }
+                if (cec != null)
+                {
+                    GameObject effect3 = Instantiate(effect, enemyAtackable.transform.position, Quaternion.identity);
+                    attackSound.Play();
+                    cec.Damaged(5);
+                    Destroy(effect3, 0.4f);
+                }
+
 
             }
         }

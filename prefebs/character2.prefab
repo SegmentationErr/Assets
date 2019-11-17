@@ -149,7 +149,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464255075
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: bbe661cfccf927d4092c9847fb9633a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -543,6 +543,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4133696431533914057}
     m_Modifications:
+    - target: {fileID: 315034662986150819, guid: 49c5acc97fc3f1241af4d7d3899bd571,
+        type: 3}
+      propertyPath: m_Name
+      value: potion_blue_small
+      objectReference: {fileID: 0}
+    - target: {fileID: 315034662986150819, guid: 49c5acc97fc3f1241af4d7d3899bd571,
+        type: 3}
+      propertyPath: m_TagString
+      value: Potion
+      objectReference: {fileID: 0}
     - target: {fileID: 315034662635882367, guid: 49c5acc97fc3f1241af4d7d3899bd571,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -598,16 +608,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 315034662986150819, guid: 49c5acc97fc3f1241af4d7d3899bd571,
-        type: 3}
-      propertyPath: m_Name
-      value: potion_blue_small
-      objectReference: {fileID: 0}
-    - target: {fileID: 315034662986150819, guid: 49c5acc97fc3f1241af4d7d3899bd571,
-        type: 3}
-      propertyPath: m_TagString
-      value: Potion
-      objectReference: {fileID: 0}
     - target: {fileID: 8942675665913791537, guid: 49c5acc97fc3f1241af4d7d3899bd571,
         type: 3}
       propertyPath: m_Enabled
@@ -636,12 +636,12 @@ PrefabInstance:
     - target: {fileID: 3964780908965432592, guid: 30d9c65cb8ab62449ae32956b59d6ce8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.14
+      value: -0.021
       objectReference: {fileID: 0}
     - target: {fileID: 3964780908965432592, guid: 30d9c65cb8ab62449ae32956b59d6ce8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.94
+      value: -0.077
       objectReference: {fileID: 0}
     - target: {fileID: 3964780908965432592, guid: 30d9c65cb8ab62449ae32956b59d6ce8,
         type: 3}

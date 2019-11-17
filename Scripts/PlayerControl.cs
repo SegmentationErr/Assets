@@ -84,7 +84,7 @@ public class PlayerControl : MonoBehaviour
         //player.constraints = RigidbodyConstraints2D.FreezeAll;
         if (collision.gameObject.tag == "Enemy")
         {
-            health.CurrentVal -= 10;
+            
             //energy.CurrentVal -= 10;
         }
 
