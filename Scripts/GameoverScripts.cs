@@ -13,6 +13,6 @@ public class GameoverScripts : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Room");
     }
 }

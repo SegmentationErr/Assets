@@ -20,7 +20,7 @@ public class EnterDongeon : MonoBehaviour
 
     IEnumerator LoadAsynchronously()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync("Main");
+        AsyncOperation operation = SceneManager.LoadSceneAsync("level1");
 
         LoadingScreen.SetActive(true);
 

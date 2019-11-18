@@ -12,8 +12,10 @@ public class RoomControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        closedDoor = GameObject.Find("environment/door01");
-        openedDoor = GameObject.Find("environment/door02");
+        //closedDoor = GameObject.Find("environment/door01");
+        //openedDoor = GameObject.Find("environment/door02");
+        closedDoor = transform.parent.GetChild(transform.parent.childCount - 2).gameObject;
+        openedDoor = transform.parent.GetChild(transform.parent.childCount - 1).gameObject;
         closedSprite = closedDoor.GetComponent<SpriteRenderer>().sprite;
         openedSprite = openedDoor.GetComponent<SpriteRenderer>().sprite;
 
