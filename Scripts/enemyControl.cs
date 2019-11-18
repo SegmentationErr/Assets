@@ -96,7 +96,7 @@ public class enemyControl : MonoBehaviour
         Vector2 movement = new Vector2(xDir, yDir);
         rb2D.MovePosition(rb2D.position + movement * speed * Time.fixedDeltaTime);
 
-/*        float xDiff = target.position.x - transform.position.x;
+        float xDiff = target.position.x - transform.position.x;
         float yDiff = target.position.y - transform.position.y;
         if (xDiff > 0 && yDiff > 0)
         {
@@ -129,7 +129,7 @@ public class enemyControl : MonoBehaviour
         else if (xDiff == 0 && yDiff == 0)
         {
             
-        }*/
+        }
     }
 
     private void moveRandom()
@@ -150,8 +150,10 @@ public class enemyControl : MonoBehaviour
     void Flip()
     {
         faceright = !faceright;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        //Vector3 theScale = transform.localScale;
+        //Vector3 theRota = transform.localRotation;
+        //theScale.x *= -1;
+        //transform.localScale = theScale;
+        transform.Rotate(0, -180f, 0);
     }
 }

@@ -25,6 +25,10 @@ public class RoomControl : MonoBehaviour
         {
             c.enabled = false;
         }
+        foreach (MonoBehaviour c in transform.GetComponentsInChildren<CloseEnemyControl>())
+        {
+            c.enabled = false;
+        }
         edge = gameObject.GetComponent<EdgeCollider2D>();
         //print(transform.GetChild(2));
     }
@@ -67,6 +71,10 @@ public class RoomControl : MonoBehaviour
                 c.enabled = true;
             }
             foreach (MonoBehaviour c in transform.GetComponentsInChildren<enemyControl>())
+            {
+                c.enabled = true;
+            }
+            foreach (MonoBehaviour c in transform.GetComponentsInChildren<CloseEnemyControl>())
             {
                 c.enabled = true;
             }

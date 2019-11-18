@@ -22,8 +22,8 @@ public class CloseEnemyControl : MonoBehaviour
     private PlayerControl pc;
     [SerializeField]
     private float damage = 1;
-    float interval = 0.5f;
-    float nextTime = 0;
+    float interval = 1.1f;
+    float nextTime = 1;
     public GameObject attackEffect;
     public AudioSource attackSound;
     void Start()
@@ -72,16 +72,26 @@ public class CloseEnemyControl : MonoBehaviour
                 animator.SetBool("attack", true);
 
                 //animator.Play("attacking", -1, 0f);
+                print(Time.time);
+                //print(nextTime);
                 if (Time.time >= nextTime)
                 {
-
+                    
 
                     pc.health.CurrentVal -= damage;
 
-                    nextTime += interval;
+                    if(Time.time-nextTime > 1)
+                    {
+                        nextTime = Time.time - 1;
+                    }
+                 
+                     nextTime += interval;
+                    
+                    
                     CollisionEffect();
                     attackSound.Play();
                 }
+                
 
             }
             else animator.SetBool("attack", false);
@@ -154,7 +164,7 @@ public class CloseEnemyControl : MonoBehaviour
 
         if (Mathf.Abs(target.position.y - transform.position.y) > 1)
             yDir = target.position.y > transform.position.y ? 1 : -1;
-
+        
         Vector2 movement = new Vector2(xDir, yDir);
         rb2D.MovePosition(rb2D.position + movement * speed * Time.fixedDeltaTime);
 

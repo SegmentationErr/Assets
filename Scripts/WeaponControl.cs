@@ -83,7 +83,8 @@ public class WeaponControl : MonoBehaviour
                 {
                     if (Input.GetMouseButton(0))
                     {
-                        if(this.gameObject.tag == "Weapon_moon")
+                        
+                        if (this.gameObject.tag == "Weapon_moon")
                         {
                             PlayershootMode3();
                         }
@@ -93,12 +94,15 @@ public class WeaponControl : MonoBehaviour
                         deltaTime = 0;
                         shootSound.Play();
                         ws.energy.CurrentVal -= energyConsume;
+                        //transform.Rotate(0, 0, -50f);
+
                     }
                 }
                 else
                 {
                     deltaTime += Time.deltaTime;
                 }
+                
             }
         }
     }

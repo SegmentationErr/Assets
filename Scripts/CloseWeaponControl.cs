@@ -37,7 +37,7 @@ public class CloseWeaponControl : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
 
-            transform.Rotate(0,0,-60f);
+            transform.Rotate(0,0,-80f);
 
             if (enemyAtackable != null)
             {
