@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         coins = 0;
+        //print("player control: no money!!!!!!!!!!!!!!!");
         player = GetComponent<Rigidbody2D>();
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator = GetComponent<Animator>();
@@ -33,6 +35,7 @@ public class PlayerControl : MonoBehaviour
     private void Awake()
     {
         health.Initialize();
+        SceneManager.sceneLoaded += OnSceneLoaded;
         //energy.Initialize();
     }
     // Update is called once per frame
@@ -78,6 +81,12 @@ public class PlayerControl : MonoBehaviour
 
     }
 
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 2) transform.GetChild(0).gameObject.SetActive(false);
+        else if(scene.buildIndex > 2) transform.GetChild(0).gameObject.SetActive(true);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //player.constraints = RigidbodyConstraints2D.FreezeAll;

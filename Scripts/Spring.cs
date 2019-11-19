@@ -14,9 +14,11 @@ public class Spring : MonoBehaviour
     void Start()
     {
         flag = true;
-        hand = GameObject.Find("character2/WeaponHolder");
+        //hand = GameObject.Find("character2/WeaponHolder");
+        hand = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
         ws = hand.GetComponent<WeaponSwitching>();
-        player = GameObject.Find("character2");
+        //player = GameObject.Find("character2");
+        player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerControl>();
     }
 

@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464255075
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 02024b7e248656e4ca15262c0e381451, type: 3}
   m_Color: {r: 0.28042004, g: 0.14978641, b: 0.9622642, a: 1}
@@ -96,10 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  destroyEffect: {fileID: 7188739574366265996, guid: f80d03811ebd7fc49be293f83edb49ae,
+  destroyEffect: {fileID: 1311138171208682607, guid: 5515c18f0dd0b314e88848228f609c03,
     type: 3}
   damage: 10
-  distance: 6
 --- !u!61 &1390751397713476636
 BoxCollider2D:
   m_ObjectHideFlags: 0

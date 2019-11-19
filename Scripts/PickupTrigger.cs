@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PickupTrigger : MonoBehaviour
 {
@@ -25,16 +26,25 @@ public class PickupTrigger : MonoBehaviour
         }
 
         inventory = GameObject.Find("HUD/Inventory");
-        player = GameObject.Find("character2");
+        //player = GameObject.Find("character2");
+        player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerControl>();
 
-        hand = GameObject.Find("character2/WeaponHolder");
+        //hand = GameObject.Find("character2/WeaponHolder");
+        hand = player.transform.GetChild(0).gameObject;
         ws = hand.GetComponent<WeaponSwitching>();
         if (this.transform.parent != hand.transform)
         {
             if (gameObject.GetComponent<CloseWeaponControl>() != null) gameObject.GetComponent<CloseWeaponControl>().enabled = false;
             if (gameObject.GetComponent<WeaponControl>() != null) gameObject.GetComponent<WeaponControl>().enabled = false;
             
+        }
+        foreach (Transform weapon in hand.transform)
+        {
+            weapon.gameObject.GetComponent<PickupTrigger>().enabled = false;
+        }
+        {
+
         }
         // gameObject.tag = "Enemy";
     }

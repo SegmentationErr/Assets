@@ -15,6 +15,8 @@ public class EnterDongeon : MonoBehaviour
 
     public void LoadLevel()
     {
+
+        
         StartCoroutine(LoadAsynchronously());
     }
 
@@ -37,6 +39,8 @@ public class EnterDongeon : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            DontDestroyOnLoad(collision.gameObject);
+            collision.transform.position = new Vector3(0, 0, 0);
             LoadLevel();
         }
 

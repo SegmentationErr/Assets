@@ -14,7 +14,8 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        weaponHolder = GameObject.Find("character2/WeaponHolder");
+        //weaponHolder = GameObject.Find("character2/WeaponHolder");
+        weaponHolder = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
         updateSlot();
     }
 
