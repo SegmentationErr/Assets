@@ -18,13 +18,13 @@ public class DontDestroyMusic : MonoBehaviour
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             //welcome and start
-            if ((scene.buildIndex == 2) || (scene.buildIndex == 3))
+            if ((scene.buildIndex == 0) || (scene.buildIndex == 1))
             {
             transform.gameObject.SetActive(true);
             DontDestroyOnLoad(transform.gameObject);
 
             }
-            if (scene.buildIndex == 1)
+            if (scene.buildIndex == 3)
             {
                 transform.gameObject.SetActive(false);
                 print("main scene");
