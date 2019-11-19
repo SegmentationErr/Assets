@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  destroyEffect: {fileID: 1311138171208682607, guid: 5515c18f0dd0b314e88848228f609c03,
+  destroyEffect: {fileID: 7188739574366265996, guid: f80d03811ebd7fc49be293f83edb49ae,
     type: 3}
   damage: 10
   distance: 8

@@ -4859,7 +4859,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14.099976, y: -13.399994}
+  m_AnchoredPosition: {x: -14.099976, y: -13.400024}
   m_SizeDelta: {x: 45, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &719900852
@@ -6146,6 +6146,16 @@ PrefabInstance:
       propertyPath: health.bar
       value: 
       objectReference: {fileID: 1209585159}
+    - target: {fileID: 4133696430686308891, guid: 1656759845f800e46b0439b40552b32b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133696430686308891, guid: 1656759845f800e46b0439b40552b32b,
+        type: 3}
+      propertyPath: m_Depth
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 4133696431521970855, guid: 1656759845f800e46b0439b40552b32b,
         type: 3}
       propertyPath: m_IsActive
@@ -6673,6 +6683,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5798185328785427563, guid: 108f7d48d24cfe749a54e31aef4dc734,
+        type: 3}
+      propertyPath: m_Name
+      value: LoadingScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798185328785427563, guid: 108f7d48d24cfe749a54e31aef4dc734,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5798185328785427476, guid: 108f7d48d24cfe749a54e31aef4dc734,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6791,16 +6811,6 @@ PrefabInstance:
     - target: {fileID: 5798185328785427476, guid: 108f7d48d24cfe749a54e31aef4dc734,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5798185328785427563, guid: 108f7d48d24cfe749a54e31aef4dc734,
-        type: 3}
-      propertyPath: m_Name
-      value: LoadingScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 5798185328785427563, guid: 108f7d48d24cfe749a54e31aef4dc734,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5798185328811116369, guid: 108f7d48d24cfe749a54e31aef4dc734,
