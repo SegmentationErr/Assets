@@ -23,6 +23,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
+        print(1234);
         coins = 0;
         //print("player control: no money!!!!!!!!!!!!!!!");
         player = GetComponent<Rigidbody2D>();
@@ -60,7 +61,7 @@ public class PlayerControl : MonoBehaviour
         {
             animator.SetFloat("Face", movement.x);
         }
-
+        print(1234);
         player.MovePosition(player.position + movement * speed * Time.fixedDeltaTime);
         if (Input.GetKeyDown(KeyCode.Q))
         {
