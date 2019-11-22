@@ -28,6 +28,7 @@ public class FlashingTextScripts : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             ad.Play();
+            DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Player"));
             SceneManager.LoadScene("Start Menu");
         }
     }

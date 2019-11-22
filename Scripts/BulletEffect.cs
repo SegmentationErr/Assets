@@ -42,7 +42,7 @@ public class BulletEffect : MonoBehaviour
     void DestroyBullet()
     {
         GameObject effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 5f);
+        Destroy(effect, 10f);
         //Destroy(gameObject);
     }
 
@@ -77,7 +77,7 @@ public class BulletEffect : MonoBehaviour
     {
         rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         GameObject effect = Instantiate(destroyEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 0.4f);
+        Destroy(effect, 1f);
         Destroy(gameObject);
     }
     private void OnCollisionStay2D(Collision2D collision)

@@ -44,8 +44,20 @@ public class transfer_trigger : MonoBehaviour
 
     IEnumerator LoadAsynchronously()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex+1);
-
+        AsyncOperation operation;
+        print("SceneManager.sceneCountInBuildSettings: " + SceneManager.sceneCountInBuildSettings);
+        print("SceneManager.GetActiveScene().buildIndex + 1: " + SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().buildIndex + 1 >= SceneManager.sceneCountInBuildSettings)
+        {
+            
+            operation = SceneManager.LoadSceneAsync("Room");
+        }
+        else operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        //print(operation);
+        //if (operation == null)
+        //{
+        //    operation = SceneManager.LoadSceneAsync("Room");
+        //}
         LoadingScreen.SetActive(true);
 
         while (!operation.isDone)

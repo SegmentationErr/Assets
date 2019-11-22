@@ -563,11 +563,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: bull
       objectReference: {fileID: 0}
-    - target: {fileID: 107213590618060385, guid: 5a944ec06faa44b4dae8aeda341ad1a4,
-        type: 3}
-      propertyPath: m_TagString
-      value: EnemyArrow
-      objectReference: {fileID: 0}
     - target: {fileID: 107213590618060390, guid: 5a944ec06faa44b4dae8aeda341ad1a4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -622,17 +617,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 107213590618060391, guid: 5a944ec06faa44b4dae8aeda341ad1a4,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 6844034592874941686, guid: 58085768b1e1c4143b81a48745f1b113,
-        type: 3}
-    - target: {fileID: 107213590618060391, guid: 5a944ec06faa44b4dae8aeda341ad1a4,
-        type: 3}
-      propertyPath: shootFrequence
-      value: 0.06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a944ec06faa44b4dae8aeda341ad1a4, type: 3}

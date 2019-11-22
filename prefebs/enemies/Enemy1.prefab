@@ -563,6 +563,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bull
       objectReference: {fileID: 0}
+    - target: {fileID: 107213590618060385, guid: 5a944ec06faa44b4dae8aeda341ad1a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 107213590618060390, guid: 5a944ec06faa44b4dae8aeda341ad1a4,
         type: 3}
       propertyPath: m_LocalPosition.x

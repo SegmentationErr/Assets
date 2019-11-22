@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4375262594015419648}
   m_Layer: 0
   m_Name: bullet_4
-  m_TagString: Bullet
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464255075
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5ae853f61d0c0a64fb5a21a16732de4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,9 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b387eb0cad9563c43a2236cded9111c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 20
   destroyEffect: {fileID: 1311138171208682607, guid: 5515c18f0dd0b314e88848228f609c03,
     type: 3}
   damage: 10
+  distance: 6
 --- !u!61 &7787840124282632220
 BoxCollider2D:
   m_ObjectHideFlags: 0

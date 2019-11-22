@@ -9,8 +9,77 @@ public class EnterDongeon : MonoBehaviour
     public GameObject LoadingScreen;
     public Slider slider;
     public Text progressText;
+    private GameObject[] players;
+    private GameObject p;
+
+    private void Awake()
+    {
+        players = GameObject.FindGameObjectsWithTag("Player");
+        
+        //p = GameObject.Find("character");
+        //print(p);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void Start()
+    {
+        //players = GameObject.FindGameObjectsWithTag("Player");
+        if (players.Length == 2)
+        {
+            GameObject[] gameObjects = SceneManager.GetActiveScene().GetRootGameObjects();
+            print("Stasrt # player: " + players.Length);
+            gameObjects[0].SetActive(false);
+            //Destroy(gameObjects[0]);
+            GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(0, 0, 0);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().Play("move");
 
 
+
+            //GameObject.FindGameObjectWithTag("Player")
+            //GameObject.Find("character").SetActive(false);
+            //transform
+            //print("Stasrt # player: " + players.Length);
+        }
+    }
+
+    private void Update()
+    {
+        /*players = GameObject.FindGameObjectsWithTag("Player");
+        if (players.Length >= 2)
+        {
+            GameObject[] gameObjects = SceneManager.GetActiveScene().GetRootGameObjects();
+            //GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            //print("Stasrt # player: " + players.Length);
+            gameObjects[0].SetActive(false);
+            //players[0].SetActive(false);
+            GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(0, 0, 0);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().Play("move");
+
+
+        }*/
+
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        /*if (scene.buildIndex == 2)
+        {
+            if (players.Length >= 2)
+            {
+                GameObject[] gameObjects = SceneManager.GetActiveScene().GetRootGameObjects();
+                //GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                print("Stasrt # player: " + players.Length);
+                gameObjects[0].SetActive(false);
+                //players[0].SetActive(false);
+                GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(0, 0, 0);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().Play("move");
+
+
+            }
+        }*/
+        //welcome and start
+        
+    }
 
 
     public void LoadLevel()
@@ -22,7 +91,7 @@ public class EnterDongeon : MonoBehaviour
 
     IEnumerator LoadAsynchronously()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync("level1");
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
 
         LoadingScreen.SetActive(true);
 
@@ -35,14 +104,18 @@ public class EnterDongeon : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+            //print("player collide");
+
             DontDestroyOnLoad(collision.gameObject);
+            //player.gameObject.SetActive(false);
             collision.transform.position = new Vector3(0, 0, 0);
             LoadLevel();
         }
-
     }
+
+
 }

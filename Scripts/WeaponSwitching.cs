@@ -13,6 +13,7 @@ public class WeaponSwitching : MonoBehaviour
     void Start()
     {
         Inventory = GameObject.Find("HUD/Inventory");
+        print(Inventory);
         SelectedWeapon();
         Inventory.transform.GetChild(selectedWeapon).GetChild(0).GetComponent<Image>().color = new Color32(100, 100, 100, 255);
     }

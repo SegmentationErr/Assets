@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class OpenShop : MonoBehaviour
 {
-    private GameObject shop;
+    public GameObject shop;
     private GameObject UI;
 
     private void Awake()
     {
         //UI = GameObject.Find("Canvas");
-        shop = GameObject.Find("Canvas/Shop");
+        //shop = GameObject.Find("Canvas/Shop");
 
     }
     // Start is called before the first frame update

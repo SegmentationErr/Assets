@@ -18,14 +18,13 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D body;
     private int coins;
 
+
     //[SerializeField]
     //public BarState energy;
 
     void Start()
     {
-        print(1234);
         coins = 0;
-        //print("player control: no money!!!!!!!!!!!!!!!");
         player = GetComponent<Rigidbody2D>();
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator = GetComponent<Animator>();
@@ -61,7 +60,7 @@ public class PlayerControl : MonoBehaviour
         {
             animator.SetFloat("Face", movement.x);
         }
-        print(1234);
+
         player.MovePosition(player.position + movement * speed * Time.fixedDeltaTime);
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -75,6 +74,7 @@ public class PlayerControl : MonoBehaviour
         if (health.CurrentVal <= 0)
         {
             animator.Play("character2Dead");
+            
             EndGame();
             body.Sleep();
             this.transform.GetChild(0).gameObject.SetActive(false);
@@ -85,8 +85,30 @@ public class PlayerControl : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.buildIndex == 2) transform.GetChild(0).gameObject.SetActive(false);
-        else if(scene.buildIndex > 2) transform.GetChild(0).gameObject.SetActive(true);
+        //if(this.gameObject != null)
+        //{
+        if (scene.buildIndex < 2)
+        {
+            GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Player").transform.GetChild(6).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Player").transform.GetChild(7).gameObject.SetActive(false);
+        }
+        if (scene.buildIndex == 2)
+            {
+                GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
+                GameObject.FindGameObjectWithTag("Player").transform.GetChild(6).gameObject.SetActive(false);
+                GameObject.FindGameObjectWithTag("Player").transform.GetChild(7).gameObject.SetActive(true);
+                 health.CurrentVal += health.MaxVal;
+                transform.GetChild(0).GetComponent<WeaponSwitching>().energy.CurrentVal = transform.GetChild(0).GetComponent<WeaponSwitching>().energy.MaxVal;
+
+            }
+            else if (scene.buildIndex > 2)
+            {
+                GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(true);
+                GameObject.FindGameObjectWithTag("Player").transform.GetChild(6).gameObject.SetActive(true);
+            }
+        //}
+       
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -126,7 +148,17 @@ public class PlayerControl : MonoBehaviour
 
     public void EndGame()
     {
-        gameOver.SetActive(true);
+        if (SceneManager.GetActiveScene().name == "Room")
+        {
+            this.transform.GetChild(0).gameObject.SetActive(true);
+            health.CurrentVal += health.MaxVal;
+            transform.GetChild(0).GetComponent<WeaponSwitching>().energy.CurrentVal = transform.GetChild(0).GetComponent<WeaponSwitching>().energy.MaxVal;
+            gameOver.SetActive(false);
+        }
+        else
+        {
+            gameOver.SetActive(true);
+        }
     }
 
     public int getCoin()

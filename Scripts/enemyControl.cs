@@ -28,11 +28,13 @@ public class enemyControl : MonoBehaviour
         potions.Add(GameObject.Find("potion_blue_small"));
         potions.Add(GameObject.Find("potion_red_small"));
         coin = GameObject.Find("coin");
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
         if (this.transform.GetChild(2).gameObject.tag != "EnemyArrow")
         {
             moveTowards();
@@ -41,6 +43,7 @@ public class enemyControl : MonoBehaviour
 
         healthBar.localScale = new Vector3(health / maxHealth, 1f, 1f);
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")

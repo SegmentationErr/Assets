@@ -122,6 +122,10 @@ public class WeaponControl : MonoBehaviour
                 {
                     shootMode3();
                 }
+                else if(this.gameObject.tag == "EnemyBat")
+                {
+                    shootTracking();
+                }
                 else shootSurround();
                 //Instantiate(bullet, shotPoint.position, Quaternion.identity);
                 deltaTime = 0;
@@ -193,6 +197,8 @@ public class WeaponControl : MonoBehaviour
         rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotz);
         Instantiate(bullet, shotPoint.position, transform.rotation);
+
+        
     }
 
     private void shootTrackMul()
@@ -239,6 +245,26 @@ public class WeaponControl : MonoBehaviour
         rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotz);
         Instantiate(bullet, shotPoint.position, transform.rotation);
+
+        /*difference = weaponHolder.transform.parent.position - transform.position + new Vector3(0f, 0f, 0f);
+        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);
+
+        difference = weaponHolder.transform.parent.position - transform.position + new Vector3(0f, 0f, 0f);
+        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);
+
+        difference = weaponHolder.transform.parent.position - transform.position + new Vector3(0f, 0f, 0f);
+        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);
+
+        difference = weaponHolder.transform.parent.position - transform.position + new Vector3(0f, 0f, 0f);
+        rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotz);
+        Instantiate(bullet, shotPoint.position, transform.rotation);*/
     }
 
     private void PlayershootMode3()
