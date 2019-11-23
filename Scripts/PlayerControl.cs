@@ -18,7 +18,6 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D body;
     private int coins;
 
-
     //[SerializeField]
     //public BarState energy;
 
@@ -30,6 +29,7 @@ public class PlayerControl : MonoBehaviour
         animator = GetComponent<Animator>();
         body = this.GetComponent<Rigidbody2D>();
         animator.SetFloat("Face", 1);
+        
     }
 
     private void Awake()
@@ -163,12 +163,19 @@ public class PlayerControl : MonoBehaviour
 
     public int getCoin()
     {
+        PlayerPrefs.SetInt("n_coins", coins);
+       
         return coins;
     }
 
     public void addCoin()
     {
         coins++;
+    }
+
+    public void setCoin(int coin)
+    {
+        this.coins = coin;
     }
 
 }
