@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5602332014499576651}
   - component: {fileID: 2095442911217458775}
   - component: {fileID: 8180946460356506087}
+  - component: {fileID: 7391065410069875007}
   m_Layer: 0
   m_Name: bullet_7
   m_TagString: Bullet
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 464255075
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3c8f3da163811e3428f3ae1d25204cbe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -167,3 +168,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7391065410069875007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9175636942935953313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverOnly: 0
+  m_AssetId: 4e31817ecc7fc4b419f9717a18ef2c57
+  m_SceneId: 0
