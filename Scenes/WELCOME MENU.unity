@@ -753,6 +753,26 @@ PrefabInstance:
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 452426662}
+    - target: {fileID: 1350832805924635949, guid: 932ef365a6c98c34b82df4efaf9cc6fc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350832806690896709, guid: 932ef365a6c98c34b82df4efaf9cc6fc,
+        type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350832806690896709, guid: 932ef365a6c98c34b82df4efaf9cc6fc,
+        type: 3}
+      propertyPath: orthographic size
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162310097161036170, guid: 932ef365a6c98c34b82df4efaf9cc6fc,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 932ef365a6c98c34b82df4efaf9cc6fc, type: 3}
 --- !u!1 &1050722486
