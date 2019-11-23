@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Mirror;
 
-public class PlayerControl : MonoBehaviour
+public class MultiPlayerControl : NetworkBehaviour
 {
     public float speed = 7f;
     public Animator animator;
@@ -20,6 +21,7 @@ public class PlayerControl : MonoBehaviour
 
     //[SerializeField]
     //public BarState energy;
+    // public GameObject bullet;
 
     void Start()
     {
@@ -30,6 +32,10 @@ public class PlayerControl : MonoBehaviour
         body = this.GetComponent<Rigidbody2D>();
         animator.SetFloat("Face", 1);
         
+
+        if (! isLocalPlayer) {
+            transform.GetChild(2).gameObject.SetActive(false);
+        }
     }
 
     private void Awake()
@@ -41,6 +47,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (! isLocalPlayer) return;
         float mHorzontal = Input.GetAxis("Horizontal");
         float mVertical = Input.GetAxis("Vertical");
 
@@ -178,4 +185,24 @@ public class PlayerControl : MonoBehaviour
         this.coins = coin;
     }
 
+    public void sendToClient(GameObject g) {
+        NetworkServer.Spawn(g);
+    }
+
+    public void sendToServer(GameObject g, Vector3 position, Quaternion rotation) {
+        CmdShootFromClient(g, position, rotation);
+    }
+
+    [Command] 
+    void CmdShootFromClient(GameObject g, Vector3 position, Quaternion rotation) {
+        // GameObject bullet = GetComponentsInChildren<MultiWeaponControl>()[2].bullet;
+        // foreach (Transform child in transform) {
+        //     if (child.gameObject.active) {
+        //         bullet = child.GetComponent<MultiWeaponControl>().bullet;
+        //     }
+        // }
+        GameObject bullet = GetComponentInChildren<MultiWeaponControl>().bullet;
+        GameObject b = Instantiate(bullet, position, rotation);
+        NetworkServer.SpawnWithClientAuthority(b, connectionToClient);
+    }
 }

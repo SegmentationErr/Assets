@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class MultiWeaponControl : NetworkBehaviour
+public class MultiWeaponControl : MonoBehaviour
 {
     // public float offset
     //public GameObject player;
@@ -88,11 +88,15 @@ public class MultiWeaponControl : NetworkBehaviour
                             PlayershootMode3();
                         }
                         else {
-                            if (isServer) {
+                            if (transform.parent.parent.GetComponent<NetworkIdentity>().isServer) {
                                 GameObject b = Instantiate(bullet, shotPoint.position, transform.rotation);
-                                NetworkServer.Spawn(b);
+                                // NetworkServer.Spawn(b);
+                                transform.parent.parent.GetComponent<MultiPlayerControl>().sendToClient(b);
+                            } else {
+                                // GameObject b = Instantiate(bullet, shotPoint.position, transform.rotation);
+                                transform.parent.parent.GetComponent<MultiPlayerControl>().sendToServer(bullet, shotPoint.position, transform.rotation);
                             }
-                            Instantiate(bullet, shotPoint.position, transform.rotation);
+                            // Instantiate(bullet, shotPoint.position, transform.rotation);
                         }
 
                         //Instantiate(bullet, shotPoint.position, Quaternion.identity);
@@ -111,6 +115,13 @@ public class MultiWeaponControl : NetworkBehaviour
             }
         }
     }
+
+    // [Command]
+    // void CmdShootFromClient() {
+    //     GameObject b = Instantiate(bullet, shotPoint.position, transform.rotation);
+    //     NetworkServer.SpawnWithClientAuthority(b, connectionToClient);
+    //     print(123123);
+    // }
 
     private void PlayershootMode3()
     {
