@@ -13,7 +13,7 @@ public class Spring : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        flag = true;
+        //flag = true;
         //hand = GameObject.Find("character2/WeaponHolder");
         hand = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
         ws = hand.GetComponent<WeaponSwitching>();
@@ -25,13 +25,10 @@ public class Spring : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (flag)
-        {
+      
             ws.energy.CurrentVal = ws.energy.MaxVal;
             pc.health.CurrentVal = pc.health.MaxVal;
-            flag = false;
-        }
-        else print("have restored once!");
+
         
     }
 
