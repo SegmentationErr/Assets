@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,7 +23,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        coins = 0;
+        coins = 50;
         player = GetComponent<Rigidbody2D>();
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator = GetComponent<Animator>();
@@ -177,5 +177,8 @@ public class PlayerControl : MonoBehaviour
     {
         this.coins = coin;
     }
-
+    public void deleteCoin(int num)
+    {
+        coins -= num;
+    }
 }

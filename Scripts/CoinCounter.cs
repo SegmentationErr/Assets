@@ -8,13 +8,14 @@ public class CoinCounter : MonoBehaviour
     private List<Sprite> numbers;
     private Image first_num;
     private Image second_num;
+    //private Image third_num;
 
     // Start is called before the first frame update
     void Start()
     {
         first_num = GameObject.Find("first_num").GetComponent<Image>();
         second_num = GameObject.Find("second_num").GetComponent<Image>();
-
+        //third_num = GameObject.Find("third_num").GetComponent<Image>();
         numbers = new List<Sprite>();
         for (int i = 0; i < 10; i++) {
             numbers.Add(GameObject.Find(i.ToString()).GetComponent<SpriteRenderer>().sprite);
@@ -30,9 +31,10 @@ public class CoinCounter : MonoBehaviour
     }
 
     private void changeNum(int num) {
-        num = num > 99 ? 99 : num;
+        num = num > 990 ? 999 : num;
         first_num.sprite = numbers[num/10];
         second_num.sprite = numbers[num%10];
+        //third_num.sprite
         // print(first_num.GetComponent("Image"));
     }
 }
