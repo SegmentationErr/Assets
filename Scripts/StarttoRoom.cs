@@ -28,7 +28,8 @@ public class StarttoRoom : MonoBehaviour
 
     public void Multiplayer()
     {
-
+        print(123123);
+        SceneManager.LoadScene("Multi_Room");
     }
 
     public void LoadGame()
