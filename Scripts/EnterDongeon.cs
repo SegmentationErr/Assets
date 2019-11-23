@@ -11,6 +11,7 @@ public class EnterDongeon : MonoBehaviour
     public Text progressText;
     private GameObject[] players;
     private GameObject p;
+    public Image LevelSelectorUI;
 
     private void Awake()
     {
@@ -111,9 +112,10 @@ public class EnterDongeon : MonoBehaviour
             //print("player collide");
 
             DontDestroyOnLoad(collision.gameObject);
-            //player.gameObject.SetActive(false);
-            collision.transform.position = new Vector3(0, 0, 0);
-            LoadLevel();
+
+            //collision.transform.position = new Vector3(0, 0, 0);
+            //LoadLevel();
+            LevelSelectorUI.gameObject.SetActive(true);
         }
     }
 

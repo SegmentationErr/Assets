@@ -7,6 +7,7 @@ public class StarttoRoom : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene("Room");
+        PlayerPrefs.DeleteAll();
         GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(0, 0, 0);
 
     }
