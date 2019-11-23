@@ -23,7 +23,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        coins = 500;
+        coins = 50;
         player = GetComponent<Rigidbody2D>();
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator = GetComponent<Animator>();
