@@ -43,7 +43,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         print("loading");
-        Debug.Log("loading");
+        //Debug.Log("loading");
         SceneManager.LoadScene("Room");
         transform.parent.position = new Vector3(0, 0, 0);
         Time.timeScale = 1f;
@@ -53,7 +53,14 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit()
     {
-        Debug.Log("quit");
+        //Debug.Log("quit");
         Application.Quit();
+    }
+
+    public void SaveGame()
+    {
+        //Debug.Log("save");
+        SaveSystem.SavePlayer();
+
     }
 }

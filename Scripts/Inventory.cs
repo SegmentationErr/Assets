@@ -16,13 +16,12 @@ public class Inventory : MonoBehaviour
     {
         //weaponHolder = GameObject.Find("character2/WeaponHolder");
         weaponHolder = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
-        updateSlot();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        updateSlot();
     }
 
      void updateSlot()

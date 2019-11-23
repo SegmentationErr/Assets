@@ -8,9 +8,9 @@ public class PlayerData
     public int level;
     public int coin;
 
-    public PlayerData(PlayerControl  player){
-    	coin = player.getCoin();
-        level = PlayerPrefs.GetInt("LevelReached");
-    	
+    public PlayerData(){
+        this.coin = GameObject.FindWithTag("Player").GetComponent<PlayerControl>().getCoin();
+        this.level = PlayerPrefs.GetInt("LevelReached");
+
     }
 }

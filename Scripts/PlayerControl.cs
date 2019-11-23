@@ -18,18 +18,18 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D body;
     private int coins;
 
-
     //[SerializeField]
     //public BarState energy;
 
     void Start()
     {
-        coins = 0;
+        coins = 500;
         player = GetComponent<Rigidbody2D>();
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator = GetComponent<Animator>();
         body = this.GetComponent<Rigidbody2D>();
         animator.SetFloat("Face", 1);
+        
     }
 
     private void Awake()
@@ -163,6 +163,8 @@ public class PlayerControl : MonoBehaviour
 
     public int getCoin()
     {
+        PlayerPrefs.SetInt("n_coins", coins);
+       
         return coins;
     }
 
@@ -171,4 +173,12 @@ public class PlayerControl : MonoBehaviour
         coins++;
     }
 
+    public void setCoin(int coin)
+    {
+        this.coins = coin;
+    }
+    public void deleteCoin(int num)
+    {
+        coins -= num;
+    }
 }
