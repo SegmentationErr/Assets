@@ -12,8 +12,8 @@ public static class SaveSystem
 		FileStream stream = new FileStream(path,FileMode.Create);
 
         PlayerData data = new PlayerData();
-        //Debug.Log(data.coin);
-        //Debug.Log(data.level);
+        Debug.Log(data.coin);
+        Debug.Log(data.level);
         formatter.Serialize(stream, data);
 		stream.Close();
 	}

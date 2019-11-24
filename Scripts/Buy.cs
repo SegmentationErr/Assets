@@ -48,14 +48,14 @@ public class Buy : MonoBehaviour
         if (weaponHolder.transform.childCount < 4 && this.tag == "shopWeapon")
         {
             // get player coins
-            player = GameObject.Find("character 1").GetComponent<PlayerControl>();
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
             int coins = player.getCoin();
             //print(coins);
             if (coins >= price)
             {
                 player.deleteCoin(price);
                 GameObject weapon = Instantiate(weaponPre, weaponHolder.transform);
-                weapon.name = weaponPre.name;
+                weapon.name = this.name;
                 Destroy(buttonSelf);
             }
             else
@@ -64,13 +64,54 @@ public class Buy : MonoBehaviour
                 noMoney.SetActive(true);
             }
         }
-        else if (this.tag == "shopPotion")
+        else if (this.tag == "ShopHealth")
         {
-            print("!!!");
+
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
+            int coins = player.getCoin();
+            //print(coins);
+            if (coins >= price)
+            {
+                player.deleteCoin(price);
+                player.setHealth(1);
+                //GameObject weapon = Instantiate(weaponPre, weaponHolder.transform.GetChild(4));
+                ///////////////change/////////////
+                ///weapon.name = this.name;
+                ///////////////change/////////////
+
+            }
+            else
+            {
+                GameObject noMoney = GameObject.Find("Canvas/Shop/noMoney");
+                noMoney.SetActive(true);
+            }
+        }
+        else if (this.tag == "ShopEnergy")
+        {
+
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
+            int coins = player.getCoin();
+            //print(coins);
+            if (coins >= price)
+            {
+                player.deleteCoin(price);
+                player.setEnergy(1);
+
+                //GameObject weapon = Instantiate(weaponPre, weaponHolder.transform.GetChild(4));
+                ///////////////change/////////////
+                //weapon.name = this.name;
+                ///////////////change/////////////
+
+            }
+            else
+            {
+                GameObject noMoney = GameObject.Find("Canvas/Shop/noMoney");
+                noMoney.SetActive(true);
+            }
         }
         else if (this.tag == "shopCharacter")
         {
-            player = GameObject.Find("character 1").GetComponent<PlayerControl>();
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>(); ;
             int coins = player.getCoin();
             //print(coins);
             if (coins >= price)

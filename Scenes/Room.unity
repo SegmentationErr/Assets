@@ -10306,7 +10306,7 @@ GameObject:
   - component: {fileID: 1403523308}
   m_Layer: 5
   m_Name: potion_red_large
-  m_TagString: shopPotion
+  m_TagString: ShopHealth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13149,7 +13149,7 @@ GameObject:
   - component: {fileID: 1845975558}
   m_Layer: 5
   m_Name: potion_blue_large
-  m_TagString: shopPotion
+  m_TagString: ShopEnergy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

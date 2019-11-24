@@ -15,16 +15,15 @@ public class PickupTrigger : MonoBehaviour
 
     private void Awake()
     {
-        messageBoard = GameObject.Find("HUD/MessageBoard");
+        messageBoard = GameObject.FindGameObjectWithTag("Player").transform.GetChild(7).GetChild(1).gameObject;
     }
 
     void Start()
     {
         if (this.gameObject.tag == "Weapon" && messageBoard.activeSelf)
         {
-             messageBoard.gameObject.SetActive(false);
+            messageBoard.gameObject.SetActive(false);
         }
-
         inventory = GameObject.Find("HUD/Inventory");
         //player = GameObject.Find("character2");
         player = GameObject.FindGameObjectWithTag("Player");
@@ -33,15 +32,21 @@ public class PickupTrigger : MonoBehaviour
         //hand = GameObject.Find("character2/WeaponHolder");
         hand = player.transform.GetChild(0).gameObject;
         ws = hand.GetComponent<WeaponSwitching>();
+        print(this);
         if (this.transform.parent != hand.transform)
         {
-            if (gameObject.GetComponent<CloseWeaponControl>() != null) gameObject.GetComponent<CloseWeaponControl>().enabled = false;
+            //print("trigger");
+            if (gameObject.GetComponent<CloseWeaponControl>() != null)
+            {
+                gameObject.GetComponent<CloseWeaponControl>().enabled = false;
+                //print("!!!!!!!!!!");
+            }
             if (gameObject.GetComponent<WeaponControl>() != null) gameObject.GetComponent<WeaponControl>().enabled = false;
-            
+
         }
         foreach (Transform weapon in hand.transform)
         {
-            weapon.gameObject.GetComponent<PickupTrigger>().enabled = false;
+            weapon.gameObject.GetComponent<PickupTrigger>().enabled = true;
         }
         {
 

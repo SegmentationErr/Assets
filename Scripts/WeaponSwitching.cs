@@ -9,6 +9,8 @@ public class WeaponSwitching : MonoBehaviour
     public BarState energy;
     public int selectedWeapon = 0;
     private GameObject Inventory;
+    private PlayerControl pc;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,7 @@ public class WeaponSwitching : MonoBehaviour
         print(Inventory);
         SelectedWeapon();
         Inventory.transform.GetChild(selectedWeapon).GetChild(0).GetComponent<Image>().color = new Color32(100, 100, 100, 255);
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
     }
     private void Awake()
     {
@@ -61,9 +64,27 @@ public class WeaponSwitching : MonoBehaviour
                 selectedWeapon--;
         }
         if (Input.GetKeyDown(KeyCode.Alpha1)) selectedWeapon = 0;
-        if(Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount > 1) selectedWeapon = 1;
-        if(Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount > 2) selectedWeapon = 2;
-        if(Input.GetKeyDown(KeyCode.Alpha4) && transform.childCount > 3) selectedWeapon = 3;
+        if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount > 1) selectedWeapon = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount > 2) selectedWeapon = 2;
+        if (Input.GetKeyDown(KeyCode.Alpha4) && transform.childCount > 3) selectedWeapon = 3;
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            if (pc.getHealth() > 0)
+            {
+                pc.health.CurrentVal += 100;
+                pc.setHealth(-1);
+            }
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            if (pc.getEnergy() > 0)
+            {
+                energy.CurrentVal += 100;
+                pc.setEnergy(-1);
+            }
+
+        }
 
 
 

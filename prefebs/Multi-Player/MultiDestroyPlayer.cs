@@ -16,7 +16,7 @@ public class MultiDestroyPlayer : MonoBehaviour
     {
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			SceneManager.LoadScene("Start Menu");
+            Application.Quit();
 		}
 	}
 }

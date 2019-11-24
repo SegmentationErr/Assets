@@ -18,6 +18,10 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D body;
     private int coins;
 
+    private int healthNum = 0;
+    private int energyNum = 0;
+    private GameObject Inventory;
+
     //[SerializeField]
     //public BarState energy;
 
@@ -29,7 +33,9 @@ public class PlayerControl : MonoBehaviour
         animator = GetComponent<Animator>();
         body = this.GetComponent<Rigidbody2D>();
         animator.SetFloat("Face", 1);
-        
+        Inventory = this.transform.GetChild(transform.childCount - 1).GetChild(0).gameObject;
+
+        //healthNum = 
     }
 
     private void Awake()
@@ -73,8 +79,8 @@ public class PlayerControl : MonoBehaviour
 
         if (health.CurrentVal <= 0)
         {
-            //animator.Play("character2Dead");
-            animator.SetBool("dead", true);
+            animator.Play("character2Dead");
+
             EndGame();
             body.Sleep();
             this.transform.GetChild(0).gameObject.SetActive(false);
@@ -82,7 +88,23 @@ public class PlayerControl : MonoBehaviour
 
     }
 
+    public void setHealth(int num)
+    {
+        healthNum += num;
+    }
+    public void setEnergy(int num)
+    {
+        energyNum += num;
+    }
 
+    public int getHealth()
+    {
+        return healthNum;
+    }
+    public int getEnergy()
+    {
+        return energyNum;
+    }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //if(this.gameObject != null)
@@ -94,22 +116,21 @@ public class PlayerControl : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").transform.GetChild(7).gameObject.SetActive(false);
         }
         if (scene.buildIndex == 2)
-            {
-                GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
-                GameObject.FindGameObjectWithTag("Player").transform.GetChild(6).gameObject.SetActive(false);
-                GameObject.FindGameObjectWithTag("Player").transform.GetChild(7).gameObject.SetActive(true);
-                 health.CurrentVal += health.MaxVal;
-                transform.GetChild(0).GetComponent<WeaponSwitching>().energy.CurrentVal = transform.GetChild(0).GetComponent<WeaponSwitching>().energy.MaxVal;
-                animator.SetBool("dead", false);
+        {
+            GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Player").transform.GetChild(6).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Player").transform.GetChild(7).gameObject.SetActive(true);
+            health.CurrentVal += health.MaxVal;
+            transform.GetChild(0).GetComponent<WeaponSwitching>().energy.CurrentVal = transform.GetChild(0).GetComponent<WeaponSwitching>().energy.MaxVal;
 
-            }
-            else if (scene.buildIndex > 2)
-            {
-                GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(true);
-                GameObject.FindGameObjectWithTag("Player").transform.GetChild(6).gameObject.SetActive(true);
-            }
+        }
+        else if (scene.buildIndex > 2)
+        {
+            GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(true);
+            GameObject.FindGameObjectWithTag("Player").transform.GetChild(6).gameObject.SetActive(true);
+        }
         //}
-       
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -117,7 +138,7 @@ public class PlayerControl : MonoBehaviour
         //player.constraints = RigidbodyConstraints2D.FreezeAll;
         if (collision.gameObject.tag == "Enemy")
         {
-            
+
             //energy.CurrentVal -= 10;
         }
 
@@ -165,7 +186,7 @@ public class PlayerControl : MonoBehaviour
     public int getCoin()
     {
         PlayerPrefs.SetInt("n_coins", coins);
-       
+
         return coins;
     }
 
