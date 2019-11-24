@@ -1338,7 +1338,6 @@ GameObject:
   m_Component:
   - component: {fileID: 115959301158272039}
   - component: {fileID: 115959301158272043}
-  - component: {fileID: 115959301158272040}
   - component: {fileID: 115959301158272041}
   - component: {fileID: 115959301158272038}
   - component: {fileID: 6460894929807282087}
@@ -1414,26 +1413,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &115959301158272040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 115959301158272036}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9834b15f8292cd41abfbb2fbc143bcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 9175636942935953313, guid: 4e31817ecc7fc4b419f9717a18ef2c57, type: 3}
-  weaponHolder: {fileID: 0}
-  shotPoint: {fileID: 115959302191556577}
-  ws: {fileID: 0}
-  maxDeltaTime: 0.1
-  shootSound: {fileID: 115959302096613019}
-  shootFrequence: 0.2
-  energyConsume: 1
 --- !u!114 &115959301158272041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2732,7 +2711,6 @@ GameObject:
   m_Component:
   - component: {fileID: 115959302266179337}
   - component: {fileID: 115959302266179341}
-  - component: {fileID: 115959302266179338}
   - component: {fileID: 115959302266179339}
   - component: {fileID: 115959302266179336}
   - component: {fileID: 3328166099403367204}
@@ -2808,26 +2786,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &115959302266179338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 115959302266179334}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9834b15f8292cd41abfbb2fbc143bcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 9175636942935953313, guid: 79d95083fa4c7534395c4cba42866232, type: 3}
-  weaponHolder: {fileID: 0}
-  shotPoint: {fileID: 115959300329202229}
-  ws: {fileID: 0}
-  maxDeltaTime: 0.1
-  shootSound: {fileID: 115959301225434769}
-  shootFrequence: 0.2
-  energyConsume: 1
 --- !u!114 &115959302266179339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2978,7 +2936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6802833702048319771}
-  - component: {fileID: 6802833702048319748}
+  - component: {fileID: 7666509042936109111}
   m_Layer: 0
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -3003,7 +2961,7 @@ Transform:
   m_Father: {fileID: 6802833703063699448}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6802833702048319748
+--- !u!114 &7666509042936109111
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3012,7 +2970,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6802833702048319770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f0cd874ecb52934183442244cab306a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ae3381d84574d94db582f877bb7f151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   energy:
@@ -3179,8 +3137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serverOnly: 0
-  m_AssetId: 
-  m_SceneId: 37624885
+  m_AssetId: e6f8fb0e92039b24c90201bd3b1c3809
+  m_SceneId: 0
 --- !u!114 &9207734625177333036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3217,7 +3175,6 @@ MonoBehaviour:
     maxVal: 100
     currentVal: 100
   gameOver: {fileID: 0}
-  bullet: {fileID: 9175636942935953313, guid: 79d95083fa4c7534395c4cba42866232, type: 3}
 --- !u!1 &6802833702378955608
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 public class MultiWeaponSwitching : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class MultiWeaponSwitching : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (! transform.parent.GetComponent<NetworkIdentity>().isLocalPlayer) return;
         int previousSelectedWeapon = selectedWeapon;
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)

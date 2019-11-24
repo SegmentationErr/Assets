@@ -10,7 +10,7 @@ public class MultiWeaponControl : MonoBehaviour
     public GameObject bullet;
     public GameObject weaponHolder;
     public Transform shotPoint;
-    public WeaponSwitching ws;
+    public MultiWeaponSwitching ws;
     private float deltaTime = 0;
     public float maxDeltaTime = 0.5f;
     public AudioSource shootSound;
@@ -41,8 +41,9 @@ public class MultiWeaponControl : MonoBehaviour
 
         transform.localPosition = new Vector3(0.03399992f, -0.068f, 0);
         //weaponHolder = GameObject.Find("character2/WeaponHolder");
-        weaponHolder = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
-        ws = weaponHolder.GetComponent<WeaponSwitching>();
+        // weaponHolder = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
+        weaponHolder = transform.parent.gameObject;
+        ws = weaponHolder.GetComponent<MultiWeaponSwitching>();
         this.EnergyConsume = energyConsume;
     }
 
@@ -75,7 +76,6 @@ public class MultiWeaponControl : MonoBehaviour
             }
 
             
-
             if ((ws.energy.CurrentVal - energyConsume) >= 0)
             {
                 if (deltaTime >= maxDeltaTime)
@@ -98,12 +98,10 @@ public class MultiWeaponControl : MonoBehaviour
                             }
                             // Instantiate(bullet, shotPoint.position, transform.rotation);
                         }
-
                         //Instantiate(bullet, shotPoint.position, Quaternion.identity);
                         deltaTime = 0;
                         shootSound.Play();
                         ws.energy.CurrentVal -= energyConsume;
-                        //transform.Rotate(0, 0, -50f);
 
                     }
                 }

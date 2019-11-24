@@ -63,21 +63,11 @@ public class EnterDongeon : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        /*if (scene.buildIndex == 2)
-        {
-            if (players.Length >= 2)
-            {
-                GameObject[] gameObjects = SceneManager.GetActiveScene().GetRootGameObjects();
-                //GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-                print("Stasrt # player: " + players.Length);
-                gameObjects[0].SetActive(false);
-                //players[0].SetActive(false);
-                GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(0, 0, 0);
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().Play("move");
-
-
-            }
-        }*/
+        // if (scene.buildIndex == 3)
+        // {
+        //     print(123123123);
+        //     Destroy(GameObject.FindGameObjectWithTag("Player"));
+        // }
         //welcome and start
         
     }

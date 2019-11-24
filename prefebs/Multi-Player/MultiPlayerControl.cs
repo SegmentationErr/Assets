@@ -119,18 +119,10 @@ public class MultiPlayerControl : NetworkBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //player.constraints = RigidbodyConstraints2D.FreezeAll;
-        //player.constraints = RigidbodyConstraints2D.FreezeAll;
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Bullet")
         {
-            
-            //energy.CurrentVal -= 10;
+            health.CurrentVal -= 5;            
         }
-
-        //animator.SetTrigger("playerDead");
-        //Debug.Log("开始碰撞");
-
-
     }
 
     private void OnCollisionStay2D(Collision2D collision)
