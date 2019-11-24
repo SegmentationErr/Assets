@@ -27,7 +27,7 @@ public class GameoverScripts : MonoBehaviour
         }*/
         SceneManager.LoadScene("Room");
         transform.parent.position = new Vector3(0, 0, 0);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().Play("move");
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().Play("move");
         transform.GetChild(2).gameObject.SetActive(false);
     }
 }

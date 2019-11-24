@@ -578,6 +578,16 @@ PrefabInstance:
       propertyPath: shootFrequence
       value: 0.016
       objectReference: {fileID: 0}
+    - target: {fileID: 438755429605303138, guid: 8f556ef40478fe641aa5301df3699ff3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267504256472301722, guid: 8f556ef40478fe641aa5301df3699ff3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f556ef40478fe641aa5301df3699ff3, type: 3}
 --- !u!114 &2022733668

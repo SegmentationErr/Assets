@@ -12,6 +12,8 @@ public class Buy : MonoBehaviour
     private GameObject cancelBtn;
     public PlayerControl player;
     private int price;
+    public string character;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,14 +44,14 @@ public class Buy : MonoBehaviour
     private void ClickBuy()
     {
         GameObject weaponHolder = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
-        
+
         if (weaponHolder.transform.childCount < 4 && this.tag == "shopWeapon")
         {
             // get player coins
             player = GameObject.Find("character 1").GetComponent<PlayerControl>();
             int coins = player.getCoin();
             //print(coins);
-            if(coins >= price)
+            if (coins >= price)
             {
                 player.deleteCoin(price);
                 GameObject weapon = Instantiate(weaponPre, weaponHolder.transform);
@@ -65,12 +67,40 @@ public class Buy : MonoBehaviour
         {
             print("!!!");
         }
+        else if (this.tag == "shopCharacter")
+        {
+            player = GameObject.Find("character 1").GetComponent<PlayerControl>();
+            int coins = player.getCoin();
+            //print(coins);
+            if (coins >= price)
+            {
+                player.deleteCoin(price);
+                if (character == "c1")
+                {
+                    player.animator.Play("move 0");
+                }
+                else if (character == "c2")
+                {
+                    player.animator.Play("move 1");
+                }
+                else if (character == "c3")
+                {
+                    player.animator.Play("move 1 0");
+                }
+                Destroy(buttonSelf);
+            }
+            else
+            {
+                GameObject noMoney = GameObject.Find("Canvas/Shop/noMoney");
+                noMoney.SetActive(true);
+            }
+        }
         else
         {
             GameObject bagFull = GameObject.Find("Canvas/Shop/BagFull");
             bagFull.SetActive(true);
         }
-        
+
         buyBtn.GetComponent<Button>().onClick.RemoveListener(ClickBuy);
         checkUI.SetActive(false);
     }

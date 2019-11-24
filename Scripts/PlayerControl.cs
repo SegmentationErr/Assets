@@ -23,7 +23,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        coins = 50;
+        coins = 999;
         player = GetComponent<Rigidbody2D>();
         player.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator = GetComponent<Animator>();
@@ -73,8 +73,8 @@ public class PlayerControl : MonoBehaviour
 
         if (health.CurrentVal <= 0)
         {
-            animator.Play("character2Dead");
-            
+            //animator.Play("character2Dead");
+            animator.SetBool("dead", true);
             EndGame();
             body.Sleep();
             this.transform.GetChild(0).gameObject.SetActive(false);
@@ -100,6 +100,7 @@ public class PlayerControl : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Player").transform.GetChild(7).gameObject.SetActive(true);
                  health.CurrentVal += health.MaxVal;
                 transform.GetChild(0).GetComponent<WeaponSwitching>().energy.CurrentVal = transform.GetChild(0).GetComponent<WeaponSwitching>().energy.MaxVal;
+                animator.SetBool("dead", false);
 
             }
             else if (scene.buildIndex > 2)

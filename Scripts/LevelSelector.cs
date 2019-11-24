@@ -26,6 +26,7 @@ public class LevelSelector : MonoBehaviour
     }
     public void Select(string level)
     {
+        print(level);
         LevelSelectUI.gameObject.SetActive(false);
         SceneManager.LoadScene(level);
         player = GameObject.FindGameObjectWithTag("Player");
