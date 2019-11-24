@@ -29,7 +29,7 @@ public static class SaveSystem
 
             PlayerData data = formatter.Deserialize(stream) as PlayerData;
             //Debug.Log(data.coin);
-            //Debug.Log(data.level);
+            Debug.Log("save"+data.level);
             stream.Close();
 
             return data;

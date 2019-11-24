@@ -12,14 +12,16 @@ public class LevelSelector : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("LevelReached", 1);
+        
         int LevelReached = PlayerPrefs.GetInt("LevelReached");
-        //Debug.Log("level" + PlayerPrefs.GetInt("LevelReached"));
+        Debug.Log("level" + PlayerPrefs.GetInt("LevelReached"));
         for(int i = 0; i < LevelButton.Length; i++)
         {
             if(i+1>LevelReached)
             {
                 LevelButton[i].interactable = false;
+            }else{
+               LevelButton[i].interactable = true; 
             }
             
         }

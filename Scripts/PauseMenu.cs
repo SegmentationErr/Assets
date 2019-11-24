@@ -59,7 +59,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveGame()
     {
-        //Debug.Log("save");
+        Debug.Log("save");
         SaveSystem.SavePlayer();
 
     }
