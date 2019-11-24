@@ -95,11 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b387eb0cad9563c43a2236cded9111c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8
   destroyEffect: {fileID: 1311138171208682607, guid: 5515c18f0dd0b314e88848228f609c03,
     type: 3}
-  damage: 10
-  distance: 6
+  damage: 15
+  distance: 5
 --- !u!61 &1395984088097972300
 BoxCollider2D:
   m_ObjectHideFlags: 0

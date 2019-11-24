@@ -231,7 +231,7 @@ MonoBehaviour:
   maxDeltaTime: 0.1
   shootSound: {fileID: 4783936479120057573}
   shootFrequence: 0.1
-  energyConsume: 1
+  energyConsume: 5
 --- !u!114 &8616890960058903663
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -34,6 +34,10 @@ public class StarttoRoom : MonoBehaviour
         SceneManager.LoadScene("Multi_Room");
     }
 
+    public void quit()
+    {
+        Application.Quit();
+    }
     public void LoadGame()
     {
         //Debug.Log("load");
