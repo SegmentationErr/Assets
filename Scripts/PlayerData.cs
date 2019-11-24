@@ -7,16 +7,20 @@ public class PlayerData
     // Start is called before the first frame update
     public int level;
     public int coin;
-    // public GameObjectp[] weaponlist;
+    public List<string> weaponlist = new List<string>();
     public PlayerData(){
-        
-        GameObject player =GameObject.FindObjectWithTag("Player"); 
-        GameObject weponholder = player.transform.getChild(0).gameObject;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject weponholder = player.transform.GetChild(0).gameObject;
         this.coin = GameObject.FindWithTag("Player").GetComponent<PlayerControl>().getCoin();
         this.level = PlayerPrefs.GetInt("LevelReached");
-        foreach (transform weapon in weponholder)
+        int num = weponholder.transform.childCount;
+        for(int i = 0; i< num; i++)
         {
-           weaponlist.append(weapon.gameObject); 
+            Debug.Log(weponholder.transform.GetChild(i));
+
+            weaponlist.Add(weponholder.transform.GetChild(i).name);
         }
+        
     }
 }

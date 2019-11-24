@@ -55,6 +55,7 @@ public class Buy : MonoBehaviour
             {
                 player.deleteCoin(price);
                 GameObject weapon = Instantiate(weaponPre, weaponHolder.transform);
+                weapon.name = weaponPre.name;
                 Destroy(buttonSelf);
             }
             else
