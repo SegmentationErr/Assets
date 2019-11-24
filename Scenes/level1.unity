@@ -503,6 +503,21 @@ PrefabInstance:
       propertyPath: m_TileSpriteArray.Array.data[8].m_Data
       value: 
       objectReference: {fileID: 113872588}
+    - target: {fileID: 6237616693262763260, guid: 8f556ef40478fe641aa5301df3699ff3,
+        type: 3}
+      propertyPath: m_TileColorArray.Array.data[1].m_Data.r
+      value: 0.89440715
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237616693262763260, guid: 8f556ef40478fe641aa5301df3699ff3,
+        type: 3}
+      propertyPath: m_TileColorArray.Array.data[1].m_Data.g
+      value: 0.5230552
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237616693262763260, guid: 8f556ef40478fe641aa5301df3699ff3,
+        type: 3}
+      propertyPath: m_TileColorArray.Array.data[1].m_Data.b
+      value: 0.5737325
+      objectReference: {fileID: 0}
     - target: {fileID: 438755429673126795, guid: 8f556ef40478fe641aa5301df3699ff3,
         type: 3}
       propertyPath: m_IsActive
@@ -536,47 +551,47 @@ PrefabInstance:
     - target: {fileID: 1018634325736170012, guid: 8f556ef40478fe641aa5301df3699ff3,
         type: 3}
       propertyPath: shootFrequence
-      value: 0.016
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1241229935853316378, guid: 8f556ef40478fe641aa5301df3699ff3,
         type: 3}
       propertyPath: shootFrequence
-      value: 0.016
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2115339643400511056, guid: 8f556ef40478fe641aa5301df3699ff3,
         type: 3}
       propertyPath: shootFrequence
-      value: 0.016
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2275012629317370692, guid: 8f556ef40478fe641aa5301df3699ff3,
         type: 3}
       propertyPath: shootFrequence
-      value: 0.016
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4655146285913492733, guid: 8f556ef40478fe641aa5301df3699ff3,
         type: 3}
       propertyPath: shootFrequence
-      value: 0.016
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5134504710680911943, guid: 8f556ef40478fe641aa5301df3699ff3,
         type: 3}
       propertyPath: shootFrequence
-      value: 0.005
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6267504256798558879, guid: 8f556ef40478fe641aa5301df3699ff3,
         type: 3}
       propertyPath: shootFrequence
-      value: 0.016
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8141125969228732497, guid: 8f556ef40478fe641aa5301df3699ff3,
         type: 3}
       propertyPath: shootFrequence
-      value: 0.016
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8233713809598248281, guid: 8f556ef40478fe641aa5301df3699ff3,
         type: 3}
       propertyPath: shootFrequence
-      value: 0.016
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 438755429605303138, guid: 8f556ef40478fe641aa5301df3699ff3,
         type: 3}

@@ -228,7 +228,7 @@ MonoBehaviour:
   ws: {fileID: 0}
   maxDeltaTime: 0.1
   shootSound: {fileID: 107213590208632747}
-  shootFrequence: 0.005
+  shootFrequence: 0.1
   energyConsume: 1
 --- !u!1 &107213591104763277
 GameObject:

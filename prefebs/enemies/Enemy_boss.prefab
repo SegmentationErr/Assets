@@ -773,7 +773,7 @@ MonoBehaviour:
   ws: {fileID: 0}
   maxDeltaTime: 0.1
   shootSound: {fileID: 4456542067543131933}
-  shootFrequence: 0.016
+  shootFrequence: 0.06
   energyConsume: 0
 --- !u!1001 &4369678386214506678
 PrefabInstance:

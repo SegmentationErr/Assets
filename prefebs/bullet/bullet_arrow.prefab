@@ -98,7 +98,7 @@ MonoBehaviour:
   speed: 3
   destroyEffect: {fileID: 1311138171208682607, guid: 5515c18f0dd0b314e88848228f609c03,
     type: 3}
-  damage: 50
+  damage: 5
   distance: 6
 --- !u!61 &7787840124282632220
 BoxCollider2D:
